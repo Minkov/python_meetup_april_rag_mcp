@@ -6,20 +6,15 @@ from app.document_processor import DocumentProcessor
 from app.retrievers.multistage_retriever import MultistageRetriever
 
 class HRIntelligenceSystem:
-    def __init__(self, openai_api_key):
-        self.openai_api_key = openai_api_key
-        
+    def __init__(self, openai_api_key: str):
         # Initialize components
         self.document_store = DocumentStore()
         self.vector_db = VectorDatabase(openai_api_key)
         self.document_processor = DocumentProcessor(self.vector_db)
         
-        # Initialize retrievers
-        self.basic_retriever = Retriever(self.vector_db)
-        self.advanced_retriever = MultistageRetriever(self.vector_db, openai_api_key)
+        self.retriever = MultistageRetriever(self.vector_db)
         
-        # Initialize MCPs
-        self.mcp = ModelContextProtocol(openai_api_key)
+        self.mcp = ModelContextProtocol()
         
     def add_job_description(self, text, metadata):
         """Add a job description to the system"""
@@ -47,9 +42,8 @@ class HRIntelligenceSystem:
         
     def ask(self, query, top_k=5, max_iterations=2):
         """Ask a question to the HR Intelligence System"""
-        # Retrieve relevant documents based on specified method
         print("Using Advanced Multi-stage Retrieval...")
-        retrieval_result = self.advanced_retriever.retrieve(
+        retrieval_result = self.retriever.retrieve(
             query, 
             top_k=top_k,
             max_iterations=max_iterations

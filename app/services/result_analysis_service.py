@@ -1,21 +1,19 @@
 from typing import List, Dict, Any
 from openai import OpenAI
 
-from app.ai_service import AiService, AiServicePrompt
+from app.ai_service import AiService, AiServicePrompt, GenimiAiService
+from app.configs import FAST_GEMINI_MODEL
 from app.schemas.retriever import InformationGapType, RetrieverQueryAnalysis, RetrieverResultsAnalysis, RetrieverOptimizedQueries, RetrieverDocScoresResult, ResultAnswer
 from app.schemas.document_results import DocumentResults
 
 class ResultAnalysisService:
-    def __init__(self, openai_api_key: str, model: str = "gpt-4"):
+    def __init__(self):
         """Initialize the ResultAnalysisService
 
         Args:
-            openai_api_key: OpenAI API key
             model: LLM model to use
         """
-        self.client = OpenAI(api_key=openai_api_key)
-        self.model = model
-        self.ai_service = AiService(openai_api_key)
+        self.ai_service = GenimiAiService(FAST_GEMINI_MODEL)
 
     def analyze_results(self, query: str, query_analysis: RetrieverQueryAnalysis, formatted_results: str) -> RetrieverResultsAnalysis:
         """Analyze retrieved results to determine if more information is needed
@@ -74,7 +72,7 @@ Be precise in identifying missing information that would be critical for answeri
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverResultsAnalysis, model=self.model)
+            prompt=prompt, response_model=RetrieverResultsAnalysis)
         return result
 
     def generate_follow_up_queries(
@@ -135,7 +133,7 @@ Provide ONLY the optimized queries, with no explanations or additional text.
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverOptimizedQueries, model=self.model)
+            prompt=prompt, response_model=RetrieverOptimizedQueries)
         return result
 
     def score_results(self, query: str, query_analysis: RetrieverQueryAnalysis, results: List[DocumentResults]) -> RetrieverDocScoresResult:
@@ -199,7 +197,7 @@ Provide the document IDs, relevance scores (1-10), and explain your scoring crit
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverDocScoresResult, model=self.model)
+            prompt=prompt, response_model=RetrieverDocScoresResult)
         return result
 
     def _format_results_for_analysis(self, results: List[DocumentResults]) -> str:

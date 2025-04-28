@@ -1,16 +1,13 @@
-from typing import List, Dict, Any
-from openai import OpenAI
 
-from app.ai_service import AiService, AiServicePrompt
+from app.ai_service import AiServicePrompt, GenimiAiService
+from app.configs import FAST_GEMINI_MODEL
 from app.schemas.base import AiResponseBaseModel
 from app.schemas.retriever import Entity, InformationType, RetrieverQueryAnalysis, RetrieverOptimizedQueries
 
 
 class QueryAnalysisService:
-    def __init__(self, openai_api_key: str, model: str = "gpt-4"):
-        self.client = OpenAI(api_key=openai_api_key)
-        self.model = model
-        self.ai_service = AiService(openai_api_key)
+    def __init__(self):
+        self.ai_service = GenimiAiService(FAST_GEMINI_MODEL)
 
     def analyze_query(self, query: str) -> RetrieverQueryAnalysis:
         prompt = f"""
@@ -38,7 +35,7 @@ Respond *only* with a valid JSON object matching the provided schema. Do not add
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverQueryAnalysis, model=self.model)
+            prompt=prompt, response_model=RetrieverQueryAnalysis)
         return result
 
     def improve_query(self, query: str) -> str:
@@ -54,7 +51,7 @@ IMPORTANT CHROMADB OPTIMIZATION GUIDELINES:
 
 If the query mentions ANY person's name, create a query that:
 1. Places the person's name at the beginning for maximum weight
-2. Uses the most complete form of the name available
+2. Uses the most complete form of the name available, yet DON'T make up any new names
 3. Includes 1-2 key HR terms most relevant to the information need (resume, interview, qualifications)
 
 For example:
@@ -81,7 +78,6 @@ Your output should be JUST THE ENHANCED QUERY with no explanations or formatting
         improved_query = self.ai_service.generate_response(
             response_model=ImprovedQuery,
             prompt=prompt_obj,
-            model=self.model
         )
 
         return improved_query.improved_query
@@ -120,7 +116,7 @@ Query analysis: {query_analysis.model_dump_json()}
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverOptimizedQueries, model=self.model)
+            prompt=prompt, response_model=RetrieverOptimizedQueries)
         return result
 
     def generate_team_queries(self, original_query: str, query_analysis: RetrieverQueryAnalysis) -> RetrieverOptimizedQueries:
@@ -157,7 +153,7 @@ Query analysis: {query_analysis.model_dump_json()}
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverOptimizedQueries, model=self.model)
+            prompt=prompt, response_model=RetrieverOptimizedQueries)
         return result
 
     def generate_job_queries(self, original_query: str, query_analysis: RetrieverQueryAnalysis) -> RetrieverOptimizedQueries:
@@ -194,7 +190,7 @@ Query analysis: {query_analysis.model_dump_json()}
         )
         
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverOptimizedQueries, model=self.model)
+            prompt=prompt, response_model=RetrieverOptimizedQueries)
         return result
 
     def generate_interview_queries(self, original_query: str, query_analysis: RetrieverQueryAnalysis) -> RetrieverOptimizedQueries:
@@ -231,5 +227,5 @@ Query analysis: {query_analysis.model_dump_json()}
         )
 
         result = self.ai_service.generate_response(
-            prompt=prompt, response_model=RetrieverOptimizedQueries, model=self.model)
+            prompt=prompt, response_model=RetrieverOptimizedQueries)
         return result

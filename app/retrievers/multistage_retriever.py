@@ -1,13 +1,13 @@
 import logging
 
-from openai import OpenAI
-
-from app.ai_service import AiService
+from app.ai_service import GenimiAiService
+from app.configs import FAST_GEMINI_MODEL, THINKING_GEMINI_MODEL
 from app.schemas.document_results import DocumentResults
-from app.schemas.retriever import DocumentType, InformationGapType, InformationType, ResultAnswer, RetrieverQueryAnalysis
+from app.schemas.retriever import DocumentType, InformationGapType, ResultAnswer, RetrieverQueryAnalysis
 from app.vector_db import VectorDatabase
 from app.services.query_analysis_service import QueryAnalysisService
 from app.services.result_analysis_service import ResultAnalysisService
+from app.services.query_complexity_service import QueryComplexityService
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -18,20 +18,15 @@ class MultistageRetriever:
     def __init__(
         self,
         vector_db: VectorDatabase,
-        openai_api_key: str,
-        model: str = "gpt-4o",
         relevance_threshold: float = 4.0,
         enable_caching: bool = True
     ):
         self.vector_db = vector_db
-        self.openai_api_key = openai_api_key
-        self.client = OpenAI(api_key=openai_api_key)
-        self.model = model
-        self.ai_service = AiService(openai_api_key)
-        self.query_analysis_service = QueryAnalysisService(
-            openai_api_key, model)
-        self.result_analysis_service = ResultAnalysisService(
-            openai_api_key, model)
+        self.fast_ai_service = GenimiAiService(FAST_GEMINI_MODEL)
+        self.thinking_ai_service = GenimiAiService(THINKING_GEMINI_MODEL)
+        self.query_analysis_service = QueryAnalysisService()
+        self.result_analysis_service = ResultAnalysisService()
+        self.query_complexity_service = QueryComplexityService()
 
         self.relevance_threshold = relevance_threshold
         self.enable_caching = enable_caching
@@ -171,8 +166,8 @@ class MultistageRetriever:
         Returns:
             List of search results
         """
-        query_complexity = self._estimate_query_complexity(query, query_analysis)
-        query_hierarchy_level = self._select_hierarchy_level(query_complexity)
+        query_complexity = self.query_complexity_service.estimate_query_complexity(query, query_analysis)
+        query_hierarchy_level = self.query_complexity_service.select_hierarchy_level(query_complexity)
 
         logger.info(
             f"Using hierarchy level '{query_hierarchy_level}' and filter criteria '{filter_criteria}' for query: {query}")
@@ -460,46 +455,6 @@ class MultistageRetriever:
                 return doc_id.split(prefix)[0]
 
         return doc_id
-
-    def _estimate_query_complexity(self, query: str, query_analysis: RetrieverQueryAnalysis):
-        complexity = 0.5
-
-        complexity += min(len(query) / 200, 0.3)
-
-        complex_info_types = [
-            InformationType.TEAM_STRUCTURE,
-            InformationType.PROJECT_DETAILS,
-            InformationType.MEETING_NOTES,
-        ]
-        simple_info_types = [
-            InformationType.SPECIFIC_SKILLS,
-            InformationType.METRICS,
-            InformationType.QUALIFICATIONS
-        ]
-
-        for info_type in query_analysis.information_type:
-            if info_type in complex_info_types:
-                complexity += 0.1
-            elif info_type in simple_info_types:
-                complexity -= 0.1
-
-        # Adjust based on intent
-        intent = query_analysis.intent.lower()
-        if any(word in intent for word in ["compare", "analyze", "summarize"]):
-            complexity += 0.2
-        elif any(word in intent for word in ["find", "locate", "identify"]):
-            complexity -= 0.1
-
-        # Ensure within range
-        return min(max(complexity, 0.0), 1.0)
-
-    def _select_hierarchy_level(self, query_complexity):
-        if query_complexity < 0.4:
-            return "base"  # Specific factual queries
-        elif query_complexity < 0.7:
-            return "section"  # Topic-centered queries
-        else:
-            return "document"  # Complex, multi-topic queries
 
     def format_hierarchical_context(self, results):
         if not results:

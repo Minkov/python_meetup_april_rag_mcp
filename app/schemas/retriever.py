@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from app.schemas.base import AiResponseBaseModel
 
@@ -72,7 +72,7 @@ class RetrieverQueryAnalysis(AiResponseBaseModel):
     )
 
 
-class RetrieverOptimizedQuery(BaseModel):
+class RetrieverOptimizedQuery(AiResponseBaseModel):
     """Schema for the optimized query response for vector database retrieval."""
     
     optimized_query: str = Field(
