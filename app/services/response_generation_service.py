@@ -2,7 +2,7 @@ from typing import List, Dict, Any, Union
 import logging
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from app.ai_service import AiServicePrompt, GenimiAiService
+from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.configs import FAST_GEMINI_MODEL
 from app.schemas.base import AiResponseBaseModel
 from app.schemas.strategies import ReasoningStrategy
@@ -80,7 +80,7 @@ Your task is to break down complex questions into smaller, more manageable sub-q
         max_tokens: int = 1000,
         temperature: float = 0.3,
     ):
-        self.ai_service = GenimiAiService(model)
+        self.ai_service = get_ai_service(AiServiceCapability.THINKING)
         self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature
@@ -199,78 +199,81 @@ List each sub-question on a separate line with a number prefix.
             system_prompt=subq_system_prompt,
             user_prompt=subq_user_prompt
         )
+        try:
 
-        subq_result = self.ai_service.generate_response(
-            response_model=SubQuestionsResponse,
-            prompt=subq_prompt,
-        )
-        sub_questions = subq_result.sub_questions
+            subq_result = self.ai_service.generate_response(
+                response_model=SubQuestionsResponse,
+                prompt=subq_prompt,
+            )
+            sub_questions = subq_result.sub_questions
 
-        if not sub_questions:
-            logger.warning(
-                "Failed to parse sub-questions, falling back to direct generation")
-            return self.generate_direct_response(query, context)
+            if not sub_questions:
+                logger.warning(
+                    "Failed to parse sub-questions, falling back to direct generation")
+                return self.generate_direct_response(query, context)
 
-        # Step 2: Answer each sub-question
-        sub_answers = []
-        for i, sub_q in enumerate(sub_questions, start=1):
-            logger.info(f"Generating answer for sub-question {i}: {sub_q}")
+            # Step 2: Answer each sub-question
+            sub_answers = []
+            for i, sub_q in enumerate(sub_questions, start=1):
+                logger.info(f"Generating answer for sub-question {i}: {sub_q}")
 
-            sub_system_prompt = self.system_prompts[ReasoningStrategy.DIRECT]
+                sub_system_prompt = self.system_prompts[ReasoningStrategy.DIRECT]
 
-            sub_user_prompt = f"""
-Context information:
-{context}
+                sub_user_prompt = f"""
+    Context information:
+    {context}
 
-User sub-query: {sub_q}
-(This is part of the main query: {query})
+    User sub-query: {sub_q}
+    (This is part of the main query: {query})
 
-Please answer this specific sub-question using only the information in the context.
-Keep your answer concise and directly address this sub-question only.
-"""
-            sub_prompt = AiServicePrompt(
-                system_prompt=sub_system_prompt,
-                user_prompt=sub_user_prompt
+    Please answer this specific sub-question using only the information in the context.
+    Keep your answer concise and directly address this sub-question only.
+    """
+                sub_prompt = AiServicePrompt(
+                    system_prompt=sub_system_prompt,
+                    user_prompt=sub_user_prompt
+                )
+
+                sub_response = self.ai_service.generate_response(
+                    response_model=SubAnswerResponse,
+                    prompt=sub_prompt,
+                )
+                sub_answers.append({
+                    "question": sub_q,
+                    "answer": sub_response.answer
+                })
+
+            # Step 3: Synthesize the answers
+            synthesis_content = "Here are the answers to the sub-questions:\n\n"
+            for i, item in enumerate(sub_answers, start=1):
+                synthesis_content += f"Sub-question {i}: {item['question']}\n"
+                synthesis_content += f"Answer: {item['answer']}\n\n"
+
+            synthesis_system_prompt = """
+    You are an HR Intelligence Assistant synthesizing answers to sub-questions into a cohesive response.
+    Your task is to integrate the answers to multiple sub-questions into a single, comprehensive response to the main query.
+    Ensure you maintain all important information from the sub-answers while avoiding repetition.
+    Format your response in a clear, professional manner suitable for HR specialists.
+    """
+
+            synthesis_user_prompt = f"""
+    Main query: {query}
+
+    {synthesis_content}
+
+    Please synthesize these answers into a cohesive response to the main query.
+    """
+
+            synthesis_prompt = AiServicePrompt(
+                system_prompt=synthesis_system_prompt,
+                user_prompt=synthesis_user_prompt
             )
 
-            sub_response = self.ai_service.generate_response(
-                response_model=SubAnswerResponse,
-                prompt=sub_prompt,
+            synthesis_result = self.ai_service.generate_response(
+                response_model=ResultResponse,
+                prompt=synthesis_prompt,
             )
-            sub_answers.append({
-                "question": sub_q,
-                "answer": sub_response.answer
-            })
 
-        # Step 3: Synthesize the answers
-        synthesis_content = "Here are the answers to the sub-questions:\n\n"
-        for i, item in enumerate(sub_answers, start=1):
-            synthesis_content += f"Sub-question {i}: {item['question']}\n"
-            synthesis_content += f"Answer: {item['answer']}\n\n"
-
-        synthesis_system_prompt = """
-You are an HR Intelligence Assistant synthesizing answers to sub-questions into a cohesive response.
-Your task is to integrate the answers to multiple sub-questions into a single, comprehensive response to the main query.
-Ensure you maintain all important information from the sub-answers while avoiding repetition.
-Format your response in a clear, professional manner suitable for HR specialists.
-"""
-
-        synthesis_user_prompt = f"""
-Main query: {query}
-
-{synthesis_content}
-
-Please synthesize these answers into a cohesive response to the main query.
-"""
-
-        synthesis_prompt = AiServicePrompt(
-            system_prompt=synthesis_system_prompt,
-            user_prompt=synthesis_user_prompt
-        )
-
-        synthesis_result = self.ai_service.generate_response(
-            response_model=ResultResponse,
-            prompt=synthesis_prompt,
-        )
-
-        return synthesis_result.response
+            return synthesis_result.response
+        except Exception as e:
+            logger.error(f"Error generating multi-step response: {e}")

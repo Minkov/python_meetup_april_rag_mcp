@@ -1,8 +1,7 @@
 from typing import List, Dict, Any
 from openai import OpenAI
 
-from app.ai_service import AiService, AiServicePrompt, GenimiAiService
-from app.configs import FAST_GEMINI_MODEL
+from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.schemas.retriever import InformationGapType, RetrieverQueryAnalysis, RetrieverResultsAnalysis, RetrieverOptimizedQueries, RetrieverDocScoresResult, ResultAnswer
 from app.schemas.document_results import DocumentResults
 
@@ -13,7 +12,7 @@ class ResultAnalysisService:
         Args:
             model: LLM model to use
         """
-        self.ai_service = GenimiAiService(FAST_GEMINI_MODEL)
+        self.ai_service = get_ai_service(AiServiceCapability.FAST)
 
     def analyze_results(self, query: str, query_analysis: RetrieverQueryAnalysis, formatted_results: str) -> RetrieverResultsAnalysis:
         """Analyze retrieved results to determine if more information is needed

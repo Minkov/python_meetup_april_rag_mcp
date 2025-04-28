@@ -1,7 +1,6 @@
 import logging
 
-from app.ai_service import GenimiAiService
-from app.configs import FAST_GEMINI_MODEL, THINKING_GEMINI_MODEL
+from app.ai_service import AiServiceCapability, get_ai_service
 from app.schemas.document_results import DocumentResults
 from app.schemas.retriever import DocumentType, InformationGapType, ResultAnswer, RetrieverQueryAnalysis
 from app.vector_db import VectorDatabase
@@ -22,8 +21,8 @@ class MultistageRetriever:
         enable_caching: bool = True
     ):
         self.vector_db = vector_db
-        self.fast_ai_service = GenimiAiService(FAST_GEMINI_MODEL)
-        self.thinking_ai_service = GenimiAiService(THINKING_GEMINI_MODEL)
+        self.fast_ai_service = get_ai_service(AiServiceCapability.FAST)
+        self.thinking_ai_service = get_ai_service(AiServiceCapability.THINKING)
         self.query_analysis_service = QueryAnalysisService()
         self.result_analysis_service = ResultAnalysisService()
         self.query_complexity_service = QueryComplexityService()

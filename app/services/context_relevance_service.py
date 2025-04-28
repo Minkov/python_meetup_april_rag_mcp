@@ -3,7 +3,7 @@ import logging
 import json
 from openai import OpenAI
 
-from app.ai_service import AiServicePrompt, GenimiAiService
+from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.configs import FAST_GEMINI_MODEL
 from app.schemas.base import AiResponseBaseModel
 from app.schemas.document_results import DocumentResults
@@ -18,7 +18,7 @@ class ContextRelevanceService:
         max_tokens: int = 1000,
         temperature: float = 0.3,
     ):
-        self.ai_service = GenimiAiService(model)
+        self.ai_service = get_ai_service(AiServiceCapability.FAST)
         self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature

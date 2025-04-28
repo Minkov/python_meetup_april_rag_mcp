@@ -1,7 +1,7 @@
 from typing import Type
 from pydantic import Field
 
-from app.ai_service import AiServicePrompt, GenimiAiService
+from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.configs import FAST_GEMINI_MODEL
 from app.schemas.base import AiResponseBaseModel
 from app.schemas.strategies import ReasoningStrategy
@@ -15,8 +15,8 @@ class ReasoningStrategyResponse(AiResponseBaseModel):
 
 
 class ReasoningStrategyService:
-    def __init__(self, model: str = FAST_GEMINI_MODEL):
-        self.ai_service = GenimiAiService(model)
+    def __init__(self):
+        self.ai_service = get_ai_service(AiServiceCapability.FAST)
 
     def determine_strategy(self, query: str) -> ReasoningStrategy:
         """Determine the best reasoning strategy for a query.

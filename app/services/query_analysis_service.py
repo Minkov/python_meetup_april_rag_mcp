@@ -1,13 +1,12 @@
 
-from app.ai_service import AiServicePrompt, GenimiAiService
-from app.configs import FAST_GEMINI_MODEL
+from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.schemas.base import AiResponseBaseModel
 from app.schemas.retriever import Entity, InformationType, RetrieverQueryAnalysis, RetrieverOptimizedQueries
 
 
 class QueryAnalysisService:
     def __init__(self):
-        self.ai_service = GenimiAiService(FAST_GEMINI_MODEL)
+        self.ai_service = get_ai_service(AiServiceCapability.FAST)
 
     def analyze_query(self, query: str) -> RetrieverQueryAnalysis:
         prompt = f"""

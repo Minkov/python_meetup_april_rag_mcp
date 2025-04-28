@@ -43,7 +43,7 @@ class ModelContextProtocol:
         self.enable_logging = enable_logging
 
         # Initialize services
-        self.reasoning_strategy_service = ReasoningStrategyService(model)
+        self.reasoning_strategy_service = ReasoningStrategyService()
         self.context_handling_service = ContextHandlingService(
             model, max_tokens, temperature)
         self.response_generation_service = ResponseGenerationService(

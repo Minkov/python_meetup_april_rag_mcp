@@ -8,7 +8,7 @@ Draft an email explaining which openings best match Mark's qualifications with a
 
 Based on Alex Kim's resume and interview notes, what specific skills and experiences make him suitable for the Junior Data Engineer role, and what potential gaps might need to be addressed during onboarding if we decide to hire him?
 
-Only emails of fit candidates for the Senior position in the Data Platform team
+Only emails of fit candidates for the Senior Software Engineer in Public Website Team
 
 Top 3 candidates for the Technical Support Manager in the Customer success team
 
