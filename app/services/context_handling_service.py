@@ -23,7 +23,6 @@ class ContextHandlingService:
         temperature: float = 0.3,
     ):
         self.ai_service = get_ai_service(AiServiceCapability.FAST)
-        self.model = model
         self.max_tokens = max_tokens
         self.temperature = temperature
         self._token_estimator = lambda text: len(text) // 4
@@ -141,23 +140,6 @@ Keep document boundaries and metadata intact, but compress the content of each d
 """
 
         try:
-            response = self.client.chat.completions.create(
-                model="gpt-3.5-turbo-16k",  # Using a larger context model for compression
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": f"""
-Query: {query}
-
-Original context:
-{context}
-
-Please create a compressed version of this context that preserves all information that might help answer the query.
-                    """}
-                ],
-                temperature=0.3,
-                max_tokens=4000
-            )
-
             prompt = AiServicePrompt(
                 system_prompt=system_prompt,
                 user_prompt=f"""
@@ -175,7 +157,7 @@ Please create a compressed version of this context that preserves all informatio
                 response_model=CompressedContext
             )
 
-            return compressed_context + "\n\n[Note: Context was compressed to preserve relevant information while reducing length.]"
+            return compressed_context.compressed_context + "\n\n[Note: Context was compressed to preserve relevant information while reducing length.]"
 
         except Exception as e:
             logger.error(f"Error compressing context: {e}")

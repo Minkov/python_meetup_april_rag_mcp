@@ -684,7 +684,8 @@ class VectorDatabase:
             logger.info(f"Using search filter: {search_filter}")
 
             # IMPORTANT: Use direct ChromaDB query instead of calling self.search() to avoid recursion
-            search_params = self._build_search_params(query, search_k, search_filter)
+            search_params = self._build_search_params(
+                query, search_k, search_filter)
 
             # Directly query the collection
             raw_results = self.collection.query(**search_params)
@@ -713,7 +714,8 @@ class VectorDatabase:
                         f"No results found at level '{hierarchy_level}', falling back to all levels")
                     search_filter = filter_criteria.copy() if filter_criteria else {}
 
-                    search_params = self._build_search_params(query, top_k, search_filter)
+                    search_params = self._build_search_params(
+                        query, top_k, search_filter)
 
                     raw_results = self.collection.query(**search_params)
 
@@ -777,7 +779,7 @@ class VectorDatabase:
                 f"Error during hierarchical search: {e}", exc_info=True)
             # Return empty list instead of raising to prevent retry loops
             return []
-    
+
     def _build_search_params(self, query: str, top_k: int, filter_criteria: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Build search parameters for the ChromaDB query
 
@@ -804,7 +806,7 @@ class VectorDatabase:
                 search_params["where"] = filter_criteria
 
         return search_params
-    
+
     def _estimate_query_complexity(self, query: str) -> float:
         """Estimate the complexity of a query to determine appropriate hierarchy level
 
@@ -856,13 +858,11 @@ class VectorDatabase:
             Dictionary with document summary information or None if not found
         """
         try:
-            # Try to get the hierarchy metadata
             results = self.collection.get(
                 ids=[f"{doc_id}_hierarchy_metadata"]
             )
 
             if results and results["ids"]:
-                # Return hierarchy info
                 return {
                     "document_id": doc_id,
                     "metadata": results["metadatas"][0],
@@ -870,13 +870,11 @@ class VectorDatabase:
                     "summary_text": results["documents"][0]
                 }
 
-            # If no dedicated hierarchy metadata, try to get the legacy summary
             results = self.collection.get(
                 ids=[f"{doc_id}_summary"]
             )
 
             if results and results["ids"]:
-                # Return summary info
                 return {
                     "document_id": doc_id,
                     "metadata": results["metadatas"][0],
@@ -884,24 +882,35 @@ class VectorDatabase:
                     "summary_text": results["documents"][0]
                 }
 
-            # If no dedicated summary, try to get any chunks
-            # First try hierarchical
+            # Use proper ChromaDB where clause syntax with $and operator
             base_results = self.collection.get(
-                where={"parent_id": str(doc_id), "hierarchy_level": "base"},
+                where={
+                    "$and": [
+                        {"parent_id": str(doc_id)},
+                        {"hierarchy_level": "base"}
+                    ]
+                },
                 limit=1
             )
 
             if base_results and base_results["ids"]:
-                # Count chunks at each level
                 base_count = len(self.collection.get(
-                    where={"parent_id": str(
-                        doc_id), "hierarchy_level": "base"},
+                    where={
+                        "$and": [
+                            {"parent_id": str(doc_id)},
+                            {"hierarchy_level": "base"}
+                        ]
+                    },
                     limit=1000
                 )["ids"])
 
                 section_count = len(self.collection.get(
-                    where={"parent_id": str(
-                        doc_id), "hierarchy_level": "section"},
+                    where={
+                        "$and": [
+                            {"parent_id": str(doc_id)},
+                            {"hierarchy_level": "section"}
+                        ]
+                    },
                     limit=100
                 )["ids"])
 
@@ -927,7 +936,12 @@ class VectorDatabase:
                 # Query for chunks with different chunk sizes
                 for size in [500, 1000, 2000]:  # Default sizes in legacy approach
                     size_chunks = self.collection.get(
-                        where={"parent_id": str(doc_id), "chunk_size": size},
+                        where={
+                            "$and": [
+                                {"parent_id": str(doc_id)},
+                                {"chunk_size": size}
+                            ]
+                        },
                         limit=1000  # Set a reasonable limit
                     )
 
@@ -1283,12 +1297,11 @@ class VectorDatabase:
             List of similar documents with metadata
         """
         try:
-            if use_hierarchical:
-                results = self.search_hierarchical(
-                    text, top_k=top_k, filter_criteria=filter_criteria)
-            else:
-                results = self.search(
-                    text, top_k=top_k, filter_criteria=filter_criteria)
+            results = self.search(
+                text,
+                top_k=top_k,
+                filter_criteria=filter_criteria,
+            )
 
             # Extract unique parent documents
             unique_docs = {}

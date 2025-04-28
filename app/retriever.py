@@ -1,8 +1,9 @@
 import logging
+from typing import List
 
 from app.ai_service import AiServiceCapability, get_ai_service
 from app.schemas.document_results import DocumentResults
-from app.schemas.retriever import DocumentType, InformationGapType, ResultAnswer, RetrieverQueryAnalysis
+from app.schemas.retriever import DocumentType, InformationGapType, ResultAnswer, RetrieverOptimizedQuery, RetrieverQueryAnalysis
 from app.vector_db import VectorDatabase
 from app.services.query_analysis_service import QueryAnalysisService
 from app.services.result_analysis_service import ResultAnalysisService
@@ -13,7 +14,7 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 
-class MultistageRetriever:
+class Retriever:
     def __init__(
         self,
         vector_db: VectorDatabase,
@@ -31,18 +32,74 @@ class MultistageRetriever:
         self.enable_caching = enable_caching
 
     def retrieve(self, query, top_k=5, max_iterations=3):
+        # Step 1: Improve the query
         improved_query = self.query_analysis_service.improve_query(query)
 
+        # Step 2: Analyze the query
         query_analysis = self.query_analysis_service.analyze_query(
             improved_query)
-        
-        optimized_queries = [
-            *self._people_queries(improved_query, query_analysis),
-            *self._team_queries(improved_query, query_analysis),
-            *self._job_queries(improved_query, query_analysis),
-            *self._interview_queries(improved_query, query_analysis),
-        ]
 
+        # Step 3: Split the query into multiple optimized queries
+        optimized_queries = self._get_optimized_queries(
+            improved_query, query_analysis)
+
+        # Step 4: Get initial results
+        results = self._get_initial_results(optimized_queries, query_analysis, top_k)
+
+        # Step 5: Select the best results
+        selected_results = self._select_best_results(
+            results, improved_query, query_analysis)
+
+        # Step 6: Iterate to find additional relevant information
+        extended_results = self._extend_results(
+            selected_results, improved_query, query_analysis, max_iterations)
+
+        # Step 7: Enhance the results with hierarchy
+        enhanced_results = self._enhance_with_hierarchy(extended_results)
+
+        # Step 8: Return the results
+        return {
+            "retrieved_docs": enhanced_results,
+            "query_analysis": query_analysis,
+            "optimized_queries": optimized_queries,
+        }
+
+    def _extend_results(self, selected_results, improved_query, query_analysis, max_iterations):
+        current_results = [x for x in selected_results]
+        for iteration_count in range(max_iterations):
+            logger.info(
+                f"Starting iteration {iteration_count + 1}/{max_iterations}")
+
+            additional_results = self._perform_iteration(
+                improved_query, query_analysis, current_results)
+
+            if not additional_results:
+                logger.info(
+                    f"No additional results found in iteration {iteration_count + 1}. Stopping.")
+                break
+
+            current_results.extend(additional_results)
+            current_results.sort(key=lambda x: x.similarity, reverse=True)
+
+            logger.info(
+                f"After iteration {iteration_count + 1}: {len(current_results)} documents")
+            iteration_count += 1
+
+        return current_results
+
+    def _get_optimized_queries(self, improved_query: str, query_analysis: RetrieverQueryAnalysis):
+        try:
+            return [
+                *self._people_queries(improved_query, query_analysis),
+                *self._team_queries(improved_query, query_analysis),
+                *self._job_queries(improved_query, query_analysis),
+                *self._interview_queries(improved_query, query_analysis),
+            ]
+        except Exception as e:
+            logger.error(f"Error generating optimized queries: {e}")
+            return []
+
+    def _get_initial_results(self, optimized_queries: List[RetrieverOptimizedQuery], query_analysis: RetrieverQueryAnalysis, top_k):
         results = []
         for optimized_query in optimized_queries:
             query_results = self._get_query_results(
@@ -51,39 +108,7 @@ class MultistageRetriever:
                 top_k
             )
             results.extend(query_results)
-
-        selected_results = self._select_best_results(results, improved_query, query_analysis)
-
-        iteration_count = 0
-        while iteration_count < max_iterations:
-            logger.info(
-                f"Starting iteration {iteration_count + 1}/{max_iterations}")
-
-            additional_results = self._make_iteration(
-                improved_query, query_analysis, selected_results)
-
-            if not additional_results:
-                logger.info(
-                    f"No additional results found in iteration {iteration_count + 1}. Stopping.")
-                break
-
-            selected_results.extend(additional_results)
-            selected_results.sort(key=lambda x: x.similarity, reverse=True)
-
-            if len(selected_results) > top_k * 2:
-                selected_results = selected_results
-
-            logger.info(
-                f"After iteration {iteration_count + 1}: {len(selected_results)} documents")
-            iteration_count += 1
-
-        enhanced_results = self._enhance_with_hierarchy(selected_results)
-
-        return {
-            "retrieved_docs": enhanced_results,
-            "query_analysis": query_analysis,
-            "optimized_queries": optimized_queries,
-        }
+        return results
 
     def _people_queries(self, improved_query: str, query_analysis: RetrieverQueryAnalysis):
         if not query_analysis.people_identified:
@@ -124,12 +149,12 @@ class MultistageRetriever:
     def _select_best_results(self, results, improved_query, query_analysis):
         """
         Select the best results by deduplicating and scoring them.
-        
+
         Args:
             results: List of search results
             improved_query: The improved query text
             query_analysis: The query analysis object
-            
+
         Returns:
             List of selected results that meet the relevance threshold
         """
@@ -144,29 +169,33 @@ class MultistageRetriever:
 
         selected_results = []
         for scored_doc in scored_results.documents:
-            if scored_doc.relevance_score >= self.relevance_threshold:
-                original_doc = next(
-                    doc for doc in results
-                    if scored_doc.doc_id == doc.doc_id
-                )
-                selected_results.append(original_doc)
+            if scored_doc.relevance_score < self.relevance_threshold:
+                continue
+
+            original_doc = next(
+                doc for doc in results
+                if scored_doc.doc_id == doc.doc_id
+            )
+            selected_results.append(original_doc)
 
         return selected_results
 
     def _get_query_results(self, query, query_analysis, top_k, filter_criteria=None):
         """
         Process a single optimized query and return search results.
-        
+
         Args:
             query: The optimized query to process
             query_analysis: The query analysis object
             top_k: Number of top results to retrieve
-            
+
         Returns:
             List of search results
         """
-        query_complexity = self.query_complexity_service.estimate_query_complexity(query, query_analysis)
-        query_hierarchy_level = self.query_complexity_service.select_hierarchy_level(query_complexity)
+        query_complexity = self.query_complexity_service.estimate_query_complexity(
+            query, query_analysis)
+        query_hierarchy_level = self.query_complexity_service.select_hierarchy_level(
+            query_complexity)
 
         logger.info(
             f"Using hierarchy level '{query_hierarchy_level}' and filter criteria '{filter_criteria}' for query: {query}")
@@ -178,7 +207,7 @@ class MultistageRetriever:
             filter_criteria=filter_criteria,
         )
 
-    def _make_iteration(self, improved_query, query_analysis, selected_results):
+    def _perform_iteration(self, improved_query: str, query_analysis: RetrieverQueryAnalysis, results: List[DocumentResults]):
         """
         Performs an iteration of retrieval to find additional relevant information.
 
@@ -190,11 +219,11 @@ class MultistageRetriever:
         Returns:
             List of additional relevant documents to add to results
         """
-        if not selected_results:
+        if not results:
             return []
 
         formatted_results = self.result_analysis_service._format_results_for_analysis(
-            selected_results)
+            results)
 
         analysis_result = self.result_analysis_service.analyze_results(
             improved_query, query_analysis, formatted_results)
@@ -205,58 +234,42 @@ class MultistageRetriever:
             return []
 
         logger.info(
-            f"Results are incomplete. Generating follow-up queries. Gaps: {analysis_result.information_gaps}")
-        
-        information_gaps = {x.information_type for x in analysis_result.information_gaps}
+            f"Results are incomplete. Generating follow-up queries. Gaps: {', '.join([x.information_type.name for x in analysis_result.information_gaps])}")
+
+        information_gaps = {
+            x.information_type for x in analysis_result.information_gaps}
         follow_up_queries = []
+
+        type_to_func = {
+            InformationGapType.JOB_OPENING: self.query_analysis_service.generate_job_queries,
+            InformationGapType.TEAM_STRUCTURE: self.query_analysis_service.generate_team_queries,
+            InformationGapType.RESUME: self.query_analysis_service.generate_person_queries,
+            InformationGapType.MEETING_NOTES: self.query_analysis_service.generate_interview_queries,
+        }
+        gap_to_document_type = {
+            InformationGapType.JOB_OPENING: DocumentType.JOB_OPENING,
+            InformationGapType.TEAM_STRUCTURE: DocumentType.TEAM_STRUCTURE,
+            InformationGapType.RESUME: DocumentType.RESUME,
+            InformationGapType.MEETING_NOTES: DocumentType.MEETING_NOTES,
+        }
+
         for information_gap in information_gaps:
-            if information_gap == InformationGapType.JOB_OPENING:
-                query_result = self.query_analysis_service.generate_job_queries(
-                    improved_query, query_analysis)
-                if query_result.optimized_queries:
-                    follow_up_queries.append({
-                        "queries": query_result.optimized_queries,
-                        "filter_criteria": {
-                            "document_type": DocumentType.JOB_OPENING.value
-                        }
-                    })
-            elif information_gap == InformationGapType.TEAM_STRUCTURE:
-                query_result = self.query_analysis_service.generate_team_queries(
-                    improved_query, query_analysis)
-                if query_result.optimized_queries:
-                    follow_up_queries.append({
-                        "queries": query_result.optimized_queries,
-                        "filter_criteria": {
-                            "document_type": DocumentType.TEAM_STRUCTURE.value
-                        }
-                    })
-            elif information_gap == InformationGapType.RESUME:
-                query_result = self.query_analysis_service.generate_person_queries(
-                    improved_query, query_analysis)
-                if query_result.optimized_queries:
-                    follow_up_queries.append({
-                        "queries": query_result.optimized_queries,
-                        "filter_criteria": {
-                            "document_type": DocumentType.RESUME.value
-                        }
-                    })
-            elif information_gap == InformationGapType.MEETING_NOTES:
-                query_result = self.query_analysis_service.generate_interview_queries(
-                    improved_query, query_analysis)
-                if query_result.optimized_queries:
-                    follow_up_queries.append({
-                        "queries": query_result.optimized_queries,
-                        "filter_criteria": {
-                            "document_type": DocumentType.MEETING_NOTES.value
-                        }
-                    })
+            query_result = type_to_func[information_gap](
+                improved_query, query_analysis)
+            if query_result.optimized_queries:
+                follow_up_queries.append({
+                    "queries": query_result.optimized_queries,
+                    "filter_criteria": {
+                        "document_type": gap_to_document_type[information_gap].value
+                    }
+                })
 
         if not follow_up_queries:
             logger.info("No follow-up queries generated.")
             return []
 
         seen_doc_ids = {self._get_base_id(result)
-                        for result in selected_results}
+                        for result in results}
 
         additional_results = []
 
@@ -275,10 +288,10 @@ class MultistageRetriever:
                 ]
 
                 additional_results.extend(new_results)
-                seen_doc_ids.update(self._get_base_id(result) for result in new_results)
+                seen_doc_ids.update(self._get_base_id(result)
+                                    for result in new_results)
 
         if additional_results:
-            # Use _select_best_results to score and filter the additional results
             relevant_additional = self._select_best_results(
                 additional_results,
                 improved_query,
@@ -291,103 +304,83 @@ class MultistageRetriever:
         return []
 
     def _enhance_with_hierarchy(self, results):
-        """
-        Simplified method that enhances results by:
-        1. Reconstructing document content when needed
-        2. Adding related context from different hierarchy levels
-        """
         enhanced_results = []
-        added_ids = set()  # Track what we've already added to avoid duplicates
+        added_ids = set()
 
-        # Process each result in the original order
         for result in results:
-            # Skip if we've already added this result
             if result.doc_id in added_ids:
                 continue
 
-            # STEP 1: Handle document-level results - reconstruct content if needed
             if result.metadata.get("hierarchy_level") == "document":
-                # Check if this is just a summary without full content
-                if "Document summary for" in result.text:
-                    # Try to reconstruct from sections
-                    reconstructed_text = self._reconstruct_document_from_sections(
-                        result)
-                    if reconstructed_text:
-                        # Create a new result with the reconstructed text
-                        result = DocumentResults(
-                            doc_id=result.doc_id,
-                            similarity=result.similarity,
-                            text=reconstructed_text,
-                            metadata=result.metadata
-                        )
+                reconstructed_text = self._reconstruct_document_from_sections(result)
+                if reconstructed_text:
+                    result = DocumentResults(
+                        doc_id=result.doc_id,
+                        similarity=result.similarity,
+                        text=reconstructed_text,
+                        metadata=result.metadata
+                    )
 
-                # Add the document result (original or reconstructed)
                 enhanced_results.append(result)
                 added_ids.add(result.doc_id)
 
-                # Track any sections that are part of this document
                 if result.metadata.get("section_chunks"):
                     for section_id in result.metadata.get("section_chunks").split(","):
                         added_ids.add(section_id)
 
-                # Track any base chunks that are part of this document
                 if result.metadata.get("base_chunks"):
                     for base_id in result.metadata.get("base_chunks").split(","):
                         added_ids.add(base_id)
 
-            # STEP 2: Handle section-level results
             elif result.metadata.get("hierarchy_level") == "section":
                 enhanced_results.append(result)
                 added_ids.add(result.doc_id)
 
-                # Track any base chunks that are part of this section
                 if result.metadata.get("base_chunks"):
                     for base_id in result.metadata.get("base_chunks").split(","):
                         added_ids.add(base_id)
 
-            # STEP 3: Handle base-level results
             elif result.metadata.get("hierarchy_level") == "base":
                 enhanced_results.append(result)
                 added_ids.add(result.doc_id)
 
-                # Add adjacent chunks for context
                 self._add_adjacent_chunks(result, enhanced_results, added_ids)
 
-                # Try to find and add parent section if not already included
                 self._add_parent_section(result, enhanced_results, added_ids)
 
-        # Sort by similarity
         enhanced_results.sort(key=lambda x: x.similarity, reverse=True)
 
         return enhanced_results
 
     def _reconstruct_document_from_sections(self, doc_result):
-        """Helper method to reconstruct document content from its sections"""
         if not doc_result.metadata.get("section_chunks"):
             return None
 
-        # Get section IDs
         section_ids = doc_result.metadata.get("section_chunks").split(",")
 
-        # Retrieve sections
-        section_chunks = self.vector_db.collection.get(ids=section_ids)
+        section_chunks = []
+        for section_id in section_ids:
+            section_summary = self.vector_db.get_document_summary(section_id)
+            if section_summary and section_summary.get("summary_text"):
+                section_chunks.append(section_summary["summary_text"])
 
-        if section_chunks and section_chunks["ids"]:
-            # Combine section texts
-            return "\n\n".join(section_chunks["documents"])
+        if section_chunks:
+            return "\n\n".join(section_chunks)
 
-        # If sections not found, try base chunks
         if doc_result.metadata.get("base_chunks"):
             base_ids = doc_result.metadata.get("base_chunks").split(",")
-            base_chunks = self.vector_db.collection.get(ids=base_ids)
+            base_chunks = []
+            for base_id in base_ids:
+                base_summary = self.vector_db.get_document_summary(base_id)
+                if base_summary and base_summary.get("summary_text"):
+                    base_chunks.append(base_summary["summary_text"])
 
-            if base_chunks and base_chunks["ids"]:
-                return "\n\n".join(base_chunks["documents"])
+            if base_chunks:
+                return "\n\n".join(base_chunks)
 
         return None
 
     def _add_adjacent_chunks(self, result, enhanced_results, added_ids):
-        """Helper method to add adjacent chunks for context"""
         adj_ids = []
 
         # Check for next and previous chunks
@@ -400,18 +393,17 @@ class MultistageRetriever:
         if not adj_ids:
             return
 
-        # Retrieve adjacent chunks
-        adj_results = self.vector_db.collection.get(ids=adj_ids)
-
-        if adj_results and adj_results["ids"]:
-            for i, adj_id in enumerate(adj_results["ids"]):
-                if adj_id not in added_ids:
+        # Retrieve adjacent chunks using get_document_summary
+        for adj_id in adj_ids:
+            if adj_id not in added_ids:
+                adj_summary = self.vector_db.get_document_summary(adj_id)
+                if adj_summary and adj_summary.get("summary_text"):
                     # Add with slightly lower similarity to indicate contextual relationship
                     enhanced_results.append(DocumentResults(
                         doc_id=adj_id,
                         similarity=result.similarity * 0.85,
-                        text=adj_results["documents"][i],
-                        metadata=adj_results["metadatas"][i]
+                        text=adj_summary["summary_text"],
+                        metadata=adj_summary.get("metadata", {})
                     ))
                     added_ids.add(adj_id)
 
@@ -421,27 +413,28 @@ class MultistageRetriever:
         if not doc_id:
             return
 
-        # Find section containing this chunk
-        section_query = self.vector_db.collection.get(
-            where={
-                "$and": [
-                    {"hierarchy_level": "section"},
-                    {"parent_id": doc_id},
-                    {"base_chunks": {"$in": [result.doc_id]}}
-                ]
+        # Find section containing this chunk using get_similar_documents
+        similar_docs = self.vector_db.get_similar_documents(
+            text=result.text,
+            top_k=1,
+            filter_criteria={
+                "hierarchy_level": "section",
+                "parent_id": doc_id,
+                "base_chunks": {"$in": [result.doc_id]}
             }
         )
 
-        if section_query and section_query["ids"]:
-            for i, section_id in enumerate(section_query["ids"]):
-                if section_id not in added_ids:
-                    enhanced_results.append(DocumentResults(
-                        doc_id=section_id,
-                        similarity=result.similarity * 0.9,
-                        text=section_query["documents"][i],
-                        metadata=section_query["metadatas"][i]
-                    ))
-                    added_ids.add(section_id)
+        if similar_docs:
+            section_doc = similar_docs[0]
+            section_id = section_doc["matched_chunk"]["chunk_id"]
+            if section_id not in added_ids:
+                enhanced_results.append(DocumentResults(
+                    doc_id=section_id,
+                    similarity=result.similarity * 0.9,
+                    text=section_doc["matched_chunk"]["text"],
+                    metadata=section_doc["matched_chunk"]
+                ))
+                added_ids.add(section_id)
 
     def _get_base_id(self, result):
         if result.metadata and "parent_id" in result.metadata:

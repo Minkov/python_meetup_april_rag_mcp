@@ -1,22 +1,31 @@
 Draft an email explaining which openings best match Doncho's qualifications with actual job descriptions
 Draft an email explaining which openings best match Mark's qualifications with actual job descriptions and why
+Draft a friendly rejection email to ms Doe with concrete reasons why we have rejected her.
 Draft an email for David Chen explaining which openings best match David Chen's qualifications with actual job descriptions and why
 Draft a friendly email telling Mark that he is rejected for the Senior engineer position, yet he can have a follow-up interview for the Manager position in the Customer Success
 Draft a friendly email telling Doncho that he is rejected for the Junior web engineer position, yet he can have a follow-up interview for the Junior data engineer position. Include the job description for the Junior data engineer position and benefits of the job.
-
 Draft an email explaining which openings best match Mark's qualifications with actual job descriptions and why
 
 Based on Alex Kim's resume and interview notes, what specific skills and experiences make him suitable for the Junior Data Engineer role, and what potential gaps might need to be addressed during onboarding if we decide to hire him?
 
 Only emails of fit candidates for the Senior Software Engineer in Public Website Team
 
-Top 3 candidates for the Technical Support Manager in the Customer success team
+Top 10 candidates for the Technical Support Manager in the Customer success team
+Top 10 candidates for the Senior web engineer positions
 
 Top 3 candidates for the job of Senior data engineer in the Data Platform team
 List only the emails of shortlisted candidates for the Data engineer role in the Data Platform team.
 
-Generate a complete comparison in a table between David Chen, Mark Peterson and John Doe for the job of Senior data engineer in the Data Platform team
+Generate a complete comparison in a table between the top 5 candidates for the Manager position in the Success Team. I need comparison of: 1. related previous experience, 2. Team fit, 3. Job requirements alignment, other suggestions by you
 
+Evaluate the candidate Rachel Martinez. Based on the findings, generate a full report with tables, lists, and detailed summary of her fit in the Manager of Customer Success team with "match"/"no-match" for skills. Include any additional insights you found.
+
+Evaluate the candidate Doncho Minkov. Based on the findings, generate a full report with tables, lists, and detailed summary of his fit in the Manager of Customer Success team with "match"/"no-match" for skills. Include any additional insights you found.
+
+Is Mark Peterson good fit for the Management position in the Customer Success Team?
+
+Generate a full report with tables, lists, and detailed summary of Doncho's interview.
+Evaluate the interview of Doncho. Search for relevant to his skills and experience job openings. Build a comprehensive report on his alignment with these job openings.
 
 Explain details for the Senior data engineer job opening in the Data Platform team
 Junior data engineer job opening in the Data Platform team
@@ -24,3 +33,4 @@ Explain details for the Senior Software Engineer Public Website Team for a non-t
 
 Explain to me the difference between a Mid-Level Software Engineer and a Junior Data Engineer.
 
+Analyze the resume of Mark, compare it to the job description of the Senior Web Engineer and provide a match score

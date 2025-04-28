@@ -1,5 +1,6 @@
 from typing import List, Dict, Any, Union
 import logging
+from pydantic import Field
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
@@ -11,19 +12,22 @@ logger = logging.getLogger(__name__)
 
 
 class SubAnswerResponse(AiResponseBaseModel):
-    answer: str
+    answer: str = Field(description="The answer to the sub-question")
 
 
 class SubQuestionsResponse(AiResponseBaseModel):
-    sub_questions: List[str]
+    sub_questions: List[str] = Field(description="A list of sub-questions that are needed to answer the main query")
+
+class ChainOfThoughtReasoningStep(AiResponseBaseModel):
+    reasoning: str = Field(description="The reasoning for the step")
 
 
 class ChainOfThoughtReasoningResponse(AiResponseBaseModel):
-    reasoning: str
+    reasoning: List[ChainOfThoughtReasoningStep] = Field(description="A list of steps in the chain of thought reasoning process")
 
 
 class ResultResponse(AiResponseBaseModel):
-    response: str
+    response: str = Field(description="The final response to the user query")
 
 
 class ResponseGenerationService:
@@ -112,7 +116,7 @@ Please answer the user query using only the information provided in the context 
             response_model=ResultResponse,
             prompt=prompt,
         )
-        return result
+        return result.response
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     def generate_chain_of_thought_response(
@@ -145,7 +149,7 @@ Please answer the user query step by step:
             prompt=reasoning_prompt,
         )
 
-        reasoning = reasoning_response.reasoning
+        reasoning = "\n".join([step.reasoning for step in reasoning_response.reasoning])
 
         final_system_prompt = f"""
 {system_prompt}
@@ -168,7 +172,7 @@ Now, provide your final answer as a structured output in the format requested.
                 response_model=ResultResponse,
                 prompt=final_prompt,
             )
-            return result
+            return result.response
         except Exception as e:
             logger.error(f"Error generating structured response: {e}")
             return {"error": "Failed to parse structured output",
@@ -200,7 +204,6 @@ List each sub-question on a separate line with a number prefix.
             user_prompt=subq_user_prompt
         )
         try:
-
             subq_result = self.ai_service.generate_response(
                 response_model=SubQuestionsResponse,
                 prompt=subq_prompt,

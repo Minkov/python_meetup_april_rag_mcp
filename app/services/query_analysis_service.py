@@ -19,10 +19,28 @@ Analyze the following HR query to determine:
 4. Key terms that would be important for vector similarity search in ChromaDB
 5. Any implicit information needs not directly mentioned in the query
 
-IMPORTANT: If the query mentions ANY person's name
-- Always include the name in the people_identified list
-- Make sure the intent reflects that we're looking for information about this specific person
-- Person names are critical signals for ChromaDB retrieval
+IMPORTANT:
+1. If the query mentions ANY person's name
+  - Always include the name in the people_identified list
+  - Make sure the intent reflects that we're looking for information about this specific person
+  - Person names are critical signals for ChromaDB retrieval
+
+2. If the query mentions ANY team's name
+  - Always include the team name in the team_identified list
+  - Make sure the intent reflects that we're looking for information about this specific team
+  - Team names are critical signals for ChromaDB retrieval
+
+3. If the query mentions ANY job title, position or job description
+  - Always include the job title in the job_identified list
+  - Make sure the intent reflects that we're looking for information about this specific job
+  - Job titles are critical signals for ChromaDB retrieval
+
+4. If the query mentions ANY interview or interview feedback
+  - Always include the name of the person in the people_identified list
+  - Make sure the intent reflects that we're looking for information about this specific interview
+  - Interview names are critical signals for ChromaDB retrieval
+
+
 
 Respond *only* with a valid JSON object matching the provided schema. Do not add any introductory text, explanations outside the JSON structure, or markdown formatting.
 """
@@ -39,28 +57,36 @@ Respond *only* with a valid JSON object matching the provided schema. Do not add
 
     def improve_query(self, query: str) -> str:
         prompt = """
-You are an HR Intelligence Assistant that specializes in reformulating user queries to make them more effective for retrieving relevant information from ChromaDB, a vector database that uses semantic similarity.
+You are an HR Intelligence Assistant that specializes in reformulating user queries to make them more effective for retrieving relevant information from a vector store. Your enhanced query will be split into multiple queries by our system, and each of those queries will be used to retrieve information from the vector store.
 
 IMPORTANT CHROMADB OPTIMIZATION GUIDELINES:
-1. Create concise, focused queries (4-8 words is often ideal)
-2. Use key domain-specific terms that would appear in relevant documents
+1. Create a concise, focused query (4-8 words is ideal)
+2. Use key domain-specific HR terms that would appear in relevant documents
 3. Avoid unnecessary filler words and focus on meaningful keywords
-4. Include semantic variations of key terms to improve vector matching
+4. Include semantic variations of key terms joined with spaces, not "OR" operators
 5. For person queries, prioritize the full name and key identifiers
 
 If the query mentions ANY person's name, create a query that:
-1. Places the person's name at the beginning for maximum weight
-2. Uses the most complete form of the name available, yet DON'T make up any new names
-3. Includes 1-2 key HR terms most relevant to the information need (resume, interview, qualifications)
+1. Places the person's full name at the beginning for maximum weight
+2. Uses the most complete form of the name available (never invent or assume name parts)
+3. Includes 1-3 key HR terms most relevant to the information need
+4. Considers the specific HR context (recruitment, performance, development, compliance)
 
-For example:
-- "Find information about {PERSON_NAME}" → "{PERSON_NAME} candidate profile resume"
-- "Draft an email about job openings for {PERSON_NAME}" → "{PERSON_NAME} skills qualifications job match"
+Examples for person-based queries:
+- "Find information about John Smith" → "John Smith candidate profile resume qualifications"
+- "What's Sarah Johnson's performance like?" → "Sarah Johnson performance evaluation feedback"
+- "When did Alex Wong join the company?" → "Alex Wong hiring start date onboarding"
 
 For non-person queries, optimize by:
-1. Including domain-specific terminology highly likely to exist in target documents
+1. Including domain-specific HR terminology highly likely to exist in target documents
 2. Removing words that add little semantic value (articles, common verbs)
-3. Structuring from most to least important concepts (for ChromaDB's embedding behavior)
+3. Structuring from most to least important concepts 
+4. Including both general and specific terms related to the HR concept
+
+Examples for non-person queries:
+- "What's our policy on remote work?" → "remote work policy guidelines flexible arrangement"
+- "How do we handle maternity leave?" → "maternity leave parental benefits policy procedure"
+- "What are the steps for performance improvement plans?" → "performance improvement plan PIP process documentation"
 
 Your output should be JUST THE ENHANCED QUERY with no explanations or formatting.
 """

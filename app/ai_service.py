@@ -22,6 +22,10 @@ class AiServiceCapability(Enum):
     THINKING = "thinking"
 
 
+TGenericModel = TypeVar(
+    'TGenericModel', bound=AiResponseBaseModel, covariant=True)
+
+
 class AiServiceBase(ABC):
     strict_schema_additions_template = (
         '\n\nCRITICAL: You MUST strictly follow the provided JSON schema '
@@ -31,7 +35,7 @@ class AiServiceBase(ABC):
     )
 
     @abstractmethod
-    def generate_response(self, response_model: Type[AiResponseBaseModel], prompt: AiServicePrompt) -> AiResponseBaseModel:
+    def generate_response(self, response_model: Type[TGenericModel], prompt: AiServicePrompt) -> TGenericModel:
         pass
 
 
@@ -42,12 +46,12 @@ class OpenAIAiService(AiServiceBase):
 
     def generate_response(
         self,
-        response_model: Type[AiResponseBaseModel],
+        response_model: Type[TGenericModel],
         prompt: AiServicePrompt,
         temperature: float = 0.5,
         max_tokens: int = 1000,
         top_p: float = 1.0,
-    ):
+    ) -> TGenericModel:
         schema_prompt = None
         response_format = None
         if self.model == THINKING_OPENAI_MODEL:
@@ -88,9 +92,6 @@ class OpenAIAiService(AiServiceBase):
             raise ValueError(f"Failed to validate response: {e}")
 
 
-TGenericModel = TypeVar(
-    'TGenericModel', bound=AiResponseBaseModel, covariant=True)
-
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 
@@ -107,8 +108,7 @@ class GenimiAiService(AiServiceBase):
     ):
         self.client = genai.GenerativeModel(model)
 
-    def generate_response(self, response_model: Type[TGenericModel], prompt: AiServicePrompt,
-                          ) -> TGenericModel:
+    def generate_response(self, response_model: Type[TGenericModel], prompt: AiServicePrompt) -> TGenericModel:
         """
         Makes a call to the Gemini API. Optionally performs a preliminary AI step
         to generate a web search query, executes the search, adds results to context,

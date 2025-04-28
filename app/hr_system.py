@@ -1,18 +1,17 @@
 from app.mcp import ModelContextProtocol
 from app.doc_store import DocumentStore
-from app.retrievers.retriever import Retriever
 from app.vector_db import VectorDatabase
 from app.document_processor import DocumentProcessor
-from app.retrievers.multistage_retriever import MultistageRetriever
+from app.retriever import Retriever
 
 class HRIntelligenceSystem:
     def __init__(self, openai_api_key: str):
         # Initialize components
         self.document_store = DocumentStore()
-        self.vector_db = VectorDatabase(openai_api_key)
+        self.vector_db = VectorDatabase(openai_api_key, enable_telemetry=False)
         self.document_processor = DocumentProcessor(self.vector_db)
         
-        self.retriever = MultistageRetriever(self.vector_db)
+        self.retriever = Retriever(self.vector_db)
         
         self.mcp = ModelContextProtocol()
         
@@ -40,17 +39,16 @@ class HRIntelligenceSystem:
         doc_id = self.document_processor.process_meeting_notes(text, metadata)
         return {"file_id": file_id, "doc_id": doc_id}
         
-    def ask(self, query, top_k=5, max_iterations=2):
+    def ask(self, query, top_k=5, max_iterations=5):
         """Ask a question to the HR Intelligence System"""
-        print("Using Advanced Multi-stage Retrieval...")
         retrieval_result = self.retriever.retrieve(
             query, 
             top_k=top_k,
             max_iterations=max_iterations
         )
+
         retrieved_docs = retrieval_result["retrieved_docs"]
         
-        # Print debug info about the retrieval process
         print(f"Original query: {query}")
         print(f"Optimized queries: {retrieval_result['optimized_queries']}")
         print(f"Retrieved {len(retrieved_docs)} documents after {max_iterations} max iterations")
