@@ -1,0 +1,55 @@
+# David Chen
+## Data Engineer
+
+### Contact Information
+- Email: david.chen@email.com
+- Phone: (555) 234-5678
+- Location: Seattle, WA
+- LinkedIn: linkedin.com/in/davidchen
+
+### Summary
+Data Engineer with 4 years of experience in building and maintaining data pipelines, ETL processes, and data warehouses. Proficient in Python, SQL, and big data technologies.
+
+### Skills
+- Python, SQL
+- Apache Spark, Apache Airflow
+- AWS (S3, Redshift, EMR)
+- Data Modeling
+- ETL/ELT Processes
+- Data Quality
+- Git, Docker
+
+### Experience
+#### Data Engineer
+**DataFlow Systems** | Jun 2020 - Present
+- Designed and implemented ETL pipelines processing 1TB+ daily
+- Optimized data warehouse queries resulting in 60% faster reporting
+- Implemented data quality checks and monitoring
+- Collaborated with data scientists on ML model deployment
+
+#### Junior Data Engineer
+**Analytics Corp** | Jan 2019 - May 2020
+- Developed and maintained data pipelines
+- Created data models and schemas
+- Implemented data validation and cleaning processes
+- Assisted in data warehouse optimization
+
+### Education
+#### Master of Science in Data Science
+**University of Washington** | 2017 - 2019
+- GPA: 3.9/4.0
+- Thesis: "Optimizing ETL Processes for Real-time Analytics"
+
+#### Bachelor of Science in Computer Science
+**University of Washington** | 2013 - 2017
+- GPA: 3.7/4.0
+- Relevant coursework: Database Systems, Data Mining, Machine Learning
+
+### Projects
+- Built a real-time data pipeline for IoT sensor data
+- Developed a data quality monitoring system
+- Created an automated data validation framework
+
+### Certifications
+- AWS Certified Data Analytics - Specialty
+- Databricks Certified Associate Developer 

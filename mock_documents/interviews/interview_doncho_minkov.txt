@@ -1,0 +1,16 @@
+# Interview notes Doncho Minkov (cand014)
+Date: 2024-02-01
+
+## Technical Assessment:
+1. Strong fundamentals in computer science
+2. Good understanding of web development basics
+3. Enthusiastic about learning new technologies
+4. Clean and well-structured code in coding exercise
+
+## Area for Improvement:
+- Limited professional experience
+- Needs mentorship in production environments
+- Could benefit from more exposure to team development practices
+
+## Overall assessment:
+Promising junior candidate with good potential. Would be a good fit for our internship program with possibility of full-time conversion. 

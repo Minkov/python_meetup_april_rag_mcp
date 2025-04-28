@@ -1,0 +1,50 @@
+# Christopher Brown
+## Technical Support Manager
+
+### Contact Information
+- Email: christopher.brown@email.com
+- Phone: (555) 123-4567
+- Location: Chicago, IL
+- LinkedIn: linkedin.com/in/christopherbrown
+
+### Summary
+Technical Support Manager with 5 years of experience in leading technical support teams. Strong background in customer service and team management, with some gaps in technical expertise.
+
+### Skills
+- Team Leadership & Management
+- Technical Support Operations
+- Customer Service
+- Support Process Optimization
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**CustomerCare Inc.** | Jan 2021 - Present
+- Lead a team of 6 technical support engineers
+- Improved customer satisfaction score from 75% to 85%
+- Implemented basic support processes
+- Reduced average resolution time by 20%
+- Created basic support documentation
+- Established basic performance metrics
+- Collaborated with product teams
+
+#### Support Engineer
+**TechSupport Solutions** | Mar 2019 - Dec 2020
+- Handled customer support cases
+- Assisted in process improvement
+- Trained new support engineers
+- Created basic documentation
+- Participated in on-call rotation
+
+### Education
+#### Bachelor of Science in Information Technology
+**University of Illinois** | 2015 - 2019
+- GPA: 3.5/4.0
+- Relevant coursework: Customer Service, Team Management, Basic Programming
+
+### Certifications
+- Basic ITIL Knowledge
+- Zendesk Administrator Certification 

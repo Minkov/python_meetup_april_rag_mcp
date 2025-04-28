@@ -1,0 +1,56 @@
+# Rachel Martinez
+## Technical Support Manager
+
+### Contact Information
+- Email: rachel.martinez@email.com
+- Phone: (555) 890-1234
+- Location: San Francisco, CA
+- LinkedIn: linkedin.com/in/rachelmartinez
+
+### Summary
+Experienced Technical Support Manager with 8 years of experience in leading technical support teams and driving customer success. Strong background in team management, process improvement, and customer service excellence.
+
+### Skills
+- Team Leadership & Management
+- Technical Support Operations
+- Customer Success Management
+- Support Process Optimization
+- Zendesk, Jira, ServiceNow
+- ITIL Framework
+- Data Analytics & Reporting
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**CustomerFirst Inc.** | Jan 2020 - Present
+- Lead a team of 12 technical support engineers
+- Improved customer satisfaction score from 85% to 95%
+- Implemented ITIL framework and best practices
+- Reduced average resolution time by 40%
+- Created and maintained comprehensive support documentation
+- Established metrics-driven performance management
+- Led cross-functional collaboration with product and engineering teams
+
+#### Senior Support Engineer
+**TechSupport Solutions** | Mar 2017 - Dec 2019
+- Managed complex customer escalations
+- Created and implemented support processes
+- Mentored junior support engineers
+- Developed training materials and documentation
+- Participated in on-call rotation
+
+### Education
+#### Master of Business Administration
+**University of California, Berkeley** | 2015 - 2017
+- GPA: 3.8/4.0
+- Focus: Technology Management
+
+#### Bachelor of Science in Computer Science
+**University of California, Berkeley** | 2011 - 2015
+- GPA: 3.7/4.0
+- Relevant coursework: Customer Service, Team Management, Software Engineering
+
+### Certifications
+- ITIL v4 Foundation
+- AWS Certified Cloud Practitioner
+- Zendesk Administrator Certification 

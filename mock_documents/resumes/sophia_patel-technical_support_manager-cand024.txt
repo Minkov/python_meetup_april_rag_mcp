@@ -1,0 +1,56 @@
+# Sophia Patel
+## Technical Support Manager
+
+### Contact Information
+- Email: sophia.patel@email.com
+- Phone: (555) 012-3456
+- Location: Austin, TX
+- LinkedIn: linkedin.com/in/sophiapatel
+
+### Summary
+Technical Support Manager with 7 years of experience in leading technical support teams and driving customer success. Strong background in enterprise support, team management, and process optimization.
+
+### Skills
+- Team Leadership & Management
+- Technical Support Operations
+- Customer Success Management
+- Support Process Optimization
+- Zendesk, Jira, ServiceNow
+- ITIL Framework
+- Data Analytics & Reporting
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**Enterprise Solutions Inc.** | Jan 2020 - Present
+- Lead a team of 10 technical support engineers
+- Improved customer satisfaction score from 80% to 90%
+- Implemented ITIL framework and best practices
+- Reduced average resolution time by 30%
+- Created and maintained support documentation
+- Established performance metrics and KPIs
+- Led cross-functional collaboration with product teams
+
+#### Senior Support Engineer
+**TechSupport Solutions** | Mar 2017 - Dec 2019
+- Managed customer escalations
+- Created support processes and workflows
+- Mentored junior support engineers
+- Developed training materials
+- Participated in on-call rotation
+
+### Education
+#### Master of Science in Information Technology
+**University of Texas at Austin** | 2015 - 2017
+- GPA: 3.8/4.0
+- Focus: Technology Management
+
+#### Bachelor of Science in Computer Science
+**University of Texas at Austin** | 2011 - 2015
+- GPA: 3.7/4.0
+- Relevant coursework: Customer Service, Team Management, Software Engineering
+
+### Certifications
+- ITIL v4 Foundation
+- AWS Certified Cloud Practitioner
+- Zendesk Administrator Certification 

@@ -1,0 +1,15 @@
+# Interview notes Jane Doe (cand008)
+Date: 2024-01-20
+
+## Technical Assessment:
+1. Excellent React and TypeScript knowledge
+2. Strong understanding of frontend architecture
+3. Impressive portfolio of responsive web applications
+4. Good grasp of performance optimization techniques
+
+## Area for Improvement:
+- Limited experience with backend technologies
+- Could benefit from more exposure to microservices
+
+## Overall assessment:
+Strong candidate for the positions in the web teams. Her experience aligns well with our current needs. 

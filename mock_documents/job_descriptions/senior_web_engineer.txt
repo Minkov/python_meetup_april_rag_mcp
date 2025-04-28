@@ -1,0 +1,38 @@
+# Senior Software Engineer - Public Website Team
+- Position: Software Engineer
+- Level: Senior
+- Team: Public Website Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Public Website Team as a Senior Software Engineer and help shape the future of our customer-facing web applications. You'll be responsible for architecting and implementing high-performance, scalable web solutions that serve millions of users daily.
+
+## Requirements:
+- 5+ years of professional experience in web development
+- Expert-level proficiency in JavaScript/TypeScript and modern web technologies
+- Deep knowledge of React, Next.js, and modern web frameworks
+- Extensive experience with microservices architecture and distributed systems
+- Strong understanding of web security best practices and performance optimization
+- Proven track record of leading technical initiatives and mentoring team members
+- Experience with CI/CD pipelines and automated testing frameworks
+- Bachelor's degree in Computer Science or equivalent practical experience
+- Excellent communication and collaboration skills
+
+## Responsibilities:
+- Lead the development of our public-facing web applications
+- Architect and implement scalable, maintainable solutions
+- Mentor junior and mid-level developers through code reviews and pair programming
+- Drive technical decisions and establish best practices across the team
+- Collaborate with product managers, designers, and other engineering teams
+- Optimize application performance and user experience
+- Implement security best practices and ensure code quality
+- Participate in on-call rotation and incident response
+- Contribute to technical documentation and knowledge sharing
+
+## Nice to Have:
+- Experience with GraphQL and REST APIs
+- Knowledge of server-side rendering and static site generation
+- Familiarity with cloud platforms (AWS, GCP, or Azure)
+- Experience with monitoring and observability tools
+- Contributions to open-source projects 

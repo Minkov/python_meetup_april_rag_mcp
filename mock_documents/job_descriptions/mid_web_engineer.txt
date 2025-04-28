@@ -1,0 +1,37 @@
+# Mid-Level Software Engineer - Public Website Team
+- Position: Software Engineer
+- Level: Mid-Level
+- Team: Public Website Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Public Website Team as a Mid-Level Software Engineer and contribute to building robust, user-friendly web applications. You'll work alongside senior engineers to implement features and improvements that directly impact our customers' experience.
+
+## Requirements:
+- 3+ years of professional experience in web development
+- Strong proficiency in JavaScript/TypeScript
+- Experience with React and modern web frameworks
+- Understanding of web application architecture and design patterns
+- Knowledge of REST APIs and web services
+- Familiarity with version control systems (Git)
+- Bachelor's degree in Computer Science or equivalent practical experience
+- Good problem-solving and debugging skills
+
+## Responsibilities:
+- Develop and maintain web applications using React and TypeScript
+- Implement new features and improvements based on product requirements
+- Write clean, maintainable, and well-tested code
+- Collaborate with designers to implement responsive UI components
+- Work with backend teams to integrate APIs and services
+- Participate in code reviews and team discussions
+- Contribute to technical documentation
+- Help identify and fix bugs and performance issues
+
+## Nice to Have:
+- Experience with Next.js or similar frameworks
+- Knowledge of state management solutions (Redux, Context API)
+- Familiarity with testing frameworks (Jest, React Testing Library)
+- Understanding of web accessibility standards
+- Experience with CI/CD pipelines
+- Basic knowledge of cloud platforms (AWS, GCP, or Azure) 

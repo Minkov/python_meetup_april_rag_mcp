@@ -1,0 +1,60 @@
+Doncho Minkov
+Software Engineering Intern
+doncho.minkov@email.com | (555) 987-6543 | linkedin.com/in/donchominkov | github.com/donchominkov
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | Expected Graduation: May 2024
+• GPA: 3.9/4.0
+• Dean's List: 2020-2023
+• Relevant Coursework:
+  - Data Structures and Algorithms (A+)
+  - Web Development (A)
+  - Database Systems (A)
+  - Software Engineering (A)
+  - Machine Learning (A-)
+  - Operating Systems (A)
+• Senior Project: E-commerce Platform with Real-time Inventory Management
+  - Built using React, Node.js, and MongoDB
+  - Implemented real-time updates using WebSocket
+  - Deployed on AWS with CI/CD pipeline
+
+TECHNICAL PROJECTS
+
+Personal Portfolio Website
+• Developed responsive single-page application using React and TypeScript
+• Implemented dark/light mode with CSS variables and Context API
+• Optimized performance with code splitting and lazy loading
+• Deployed on AWS S3 with CloudFront CDN
+• Technologies: React, TypeScript, SASS, AWS
+
+Student Management System
+• Full-stack application for managing student records and course enrollment
+• Implemented JWT authentication and role-based access control
+• Created RESTful APIs with Express.js and MongoDB
+• Developed responsive UI with Material-UI
+• Technologies: MERN Stack, JWT, Material-UI, Docker
+
+Weather Forecast App
+• Built weather application using OpenWeatherMap API
+• Implemented geolocation and search functionality
+• Created responsive design with CSS Grid and Flexbox
+• Technologies: JavaScript, HTML5, CSS3, REST APIs
+
+TECHNICAL SKILLS
+• Programming Languages: JavaScript, TypeScript, Python, Java, C++
+• Frontend: React, HTML5, CSS3, SASS, Material-UI
+• Backend: Node.js, Express.js, MongoDB, PostgreSQL
+• Tools & Technologies: Git, Docker, AWS, VS Code, Postman
+• Languages: English (Fluent), Bulgarian (Native)
+
+CERTIFICATIONS & TRAINING
+• AWS Cloud Practitioner (2023)
+• MongoDB University - Basic Cluster Administration
+• Google Cloud Skills Boost - Cloud Fundamentals
+
+LEADERSHIP & ACTIVITIES
+• Computer Science Club - Vice President
+• Hackathon Participant - 2nd Place in University Hackathon 2023
+• Teaching Assistant - Data Structures and Algorithms (2022-2023)
+• Volunteer - Local Coding Bootcamp for High School Students 

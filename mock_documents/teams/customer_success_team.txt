@@ -1,0 +1,16 @@
+# Customer Success Team
+
+**Team lead**: Robert Johnson
+
+## Members:
+- Emma Davis (Senior Support Engineer)
+- Lucas White (Support Engineer)
+- Ava Miller (Support Engineer)
+
+## Focus area:
+- Technical customer support
+- Customer success management
+- Knowledge base management
+- Support process optimization
+- Customer satisfaction metrics
+- Support automation 

@@ -1,0 +1,37 @@
+# Interview Notes - Michael Taylor
+
+## Position: Backend Engineer
+## Interview Date: 2024-03-12
+
+### Technical Assessment
+- Strong Java knowledge but limited experience with modern frameworks
+- Struggled with system design questions
+- Limited understanding of microservices best practices
+- Knowledge gaps in cloud technologies
+
+### System Design
+- Proposed monolithic solutions instead of microservices
+- Did not consider scalability aspects
+- Weak understanding of distributed systems
+- Limited consideration of failure scenarios
+
+### Coding Exercise
+- Completed the task but with suboptimal solutions
+- Poor code organization
+- Limited error handling
+- No consideration for performance
+
+### Soft Skills
+- Communication was technical but lacked clarity
+- Struggled to explain architectural decisions
+- Limited collaboration experience
+- Defensive when receiving feedback
+
+### Areas of Concern
+- Lack of practical experience with microservices
+- Weak understanding of modern backend architectures
+- Limited knowledge of cloud-native development
+- Poor problem-solving skills
+
+### Overall Assessment
+Candidate does not meet the requirements for the Core Team. Technical skills and experience are below the expected level for a senior position.

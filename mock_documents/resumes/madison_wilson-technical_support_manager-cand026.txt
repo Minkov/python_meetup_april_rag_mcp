@@ -1,0 +1,55 @@
+# Madison Wilson
+## Technical Support Manager
+
+### Contact Information
+- Email: madison.wilson@email.com
+- Phone: (555) 234-5678
+- Location: Denver, CO
+- LinkedIn: linkedin.com/in/madisonwilson
+
+### Summary
+Technical Support Manager with 6 years of experience in customer service and team management. Strong background in process improvement and customer success, with some technical gaps.
+
+### Skills
+- Team Leadership & Management
+- Customer Service Excellence
+- Process Improvement
+- Support Operations
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**CustomerSuccess Inc.** | Mar 2020 - Present
+- Lead a team of 8 support representatives
+- Improved customer satisfaction score from 78% to 88%
+- Implemented customer success processes
+- Reduced average resolution time by 25%
+- Created customer success documentation
+- Established customer success metrics
+- Collaborated with product teams
+
+#### Customer Success Manager
+**TechSupport Solutions** | Jan 2018 - Feb 2020
+- Managed customer relationships
+- Improved customer retention
+- Created success processes
+- Trained support team
+- Participated in on-call rotation
+
+### Education
+#### Master of Business Administration
+**University of Colorado** | 2016 - 2018
+- GPA: 3.6/4.0
+- Focus: Customer Success Management
+
+#### Bachelor of Science in Business Administration
+**University of Colorado** | 2012 - 2016
+- GPA: 3.5/4.0
+- Relevant coursework: Customer Service, Team Management, Business Analytics
+
+### Certifications
+- Basic ITIL Knowledge
+- Customer Success Manager Certification 

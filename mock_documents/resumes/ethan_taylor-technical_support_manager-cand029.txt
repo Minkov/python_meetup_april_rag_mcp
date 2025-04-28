@@ -1,0 +1,50 @@
+# Ethan Taylor
+## Technical Support Manager
+
+### Contact Information
+- Email: ethan.taylor@email.com
+- Phone: (555) 567-8901
+- Location: Atlanta, GA
+- LinkedIn: linkedin.com/in/ethantaylor
+
+### Summary
+Technical Support Manager with 4 years of experience in technical support. Strong focus on technical aspects with limited team management and customer service experience.
+
+### Skills
+- Technical Support Operations
+- Basic Team Management
+- System Administration
+- Limited Customer Service
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Support
+
+### Experience
+#### Technical Support Manager
+**TechSupport Inc.** | Jan 2021 - Present
+- Managed a team of 5 technical support engineers
+- Focused on technical issue resolution
+- Implemented basic support processes
+- Reduced technical resolution time by 10%
+- Created technical documentation
+- Established basic performance metrics
+- Limited collaboration with other teams
+
+#### Technical Support Engineer
+**IT Solutions Corp** | Mar 2019 - Dec 2020
+- Handled technical support cases
+- Focused on system maintenance
+- Created technical documentation
+- Limited team interaction
+- Participated in on-call rotation
+
+### Education
+#### Bachelor of Science in Computer Science
+**Georgia Institute of Technology** | 2015 - 2019
+- GPA: 3.3/4.0
+- Relevant coursework: System Administration, Network Management, Programming
+
+### Certifications
+- Basic ITIL Knowledge
+- CompTIA A+ Certification 

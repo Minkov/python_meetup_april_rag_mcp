@@ -1,0 +1,56 @@
+# Alex Kim
+## Services Engineer
+
+### Contact Information
+- Email: alex.kim@email.com
+- Phone: (555) 678-9012
+- Location: Chicago, IL
+- LinkedIn: linkedin.com/in/alexkim
+
+### Summary
+Services Engineer with 5 years of experience in microservices development, service integration, and API gateway management. Expert in Node.js, TypeScript, and cloud-native architectures.
+
+### Skills
+- Node.js, TypeScript
+- Microservices Architecture
+- API Gateway
+- Service Integration
+- Docker, Kubernetes
+- AWS, Azure
+- CI/CD, Git
+
+### Experience
+#### Senior Services Engineer
+**CloudServices Inc.** | Jan 2020 - Present
+- Led microservices architecture implementation
+- Designed and implemented API gateway
+- Improved service reliability by 40%
+- Mentored junior engineers
+- Implemented service monitoring
+
+#### Services Engineer
+**TechIntegrate Corp** | Mar 2018 - Dec 2019
+- Developed and maintained microservices
+- Implemented service integration patterns
+- Created automated testing frameworks
+- Participated in system architecture design
+
+### Education
+#### Master of Science in Software Engineering
+**University of Illinois** | 2016 - 2018
+- GPA: 3.8/4.0
+- Thesis: "Microservices Architecture Patterns"
+
+#### Bachelor of Science in Computer Science
+**University of Illinois** | 2012 - 2016
+- GPA: 3.7/4.0
+- Relevant coursework: Distributed Systems, Software Architecture, Cloud Computing
+
+### Projects
+- Built a service mesh implementation
+- Developed a service discovery system
+- Created a microservices monitoring platform
+
+### Certifications
+- AWS Certified Solutions Architect
+- Microsoft Certified: Azure Solutions Architect 

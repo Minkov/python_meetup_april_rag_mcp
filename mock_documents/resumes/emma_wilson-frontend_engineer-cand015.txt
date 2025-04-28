@@ -1,0 +1,50 @@
+# Emma Wilson
+## Frontend Engineer
+
+### Contact Information
+- Email: emma.wilson@email.com
+- Phone: (555) 123-4567
+- Location: San Francisco, CA
+- LinkedIn: linkedin.com/in/emmawilson
+
+### Summary
+Experienced Frontend Engineer with 5 years of experience in building responsive and performant web applications. Strong expertise in React, TypeScript, and modern frontend architectures.
+
+### Skills
+- React, TypeScript, JavaScript
+- HTML5, CSS3, SASS
+- Web Performance Optimization
+- Responsive Design
+- Jest, React Testing Library
+- CI/CD, Git
+- Web Accessibility (WCAG)
+
+### Experience
+#### Senior Frontend Engineer
+**TechCorp Inc.** | Jan 2020 - Present
+- Led the development of a new customer portal using React and TypeScript
+- Improved page load time by 40% through code splitting and lazy loading
+- Implemented comprehensive unit and integration tests
+- Mentored junior developers and conducted code reviews
+
+#### Frontend Engineer
+**WebSolutions Ltd.** | Mar 2018 - Dec 2019
+- Developed and maintained multiple client websites
+- Implemented responsive designs and cross-browser compatibility
+- Collaborated with UX designers to implement new features
+- Optimized build process and reduced deployment time
+
+### Education
+#### Bachelor of Science in Computer Science
+**University of California, Berkeley** | 2014 - 2018
+- GPA: 3.8/4.0
+- Relevant coursework: Web Development, User Interface Design, Software Engineering
+
+### Projects
+- Built a real-time collaborative editor using WebSocket and React
+- Developed a progressive web app for local restaurant reviews
+- Created a component library used by multiple teams
+
+### Certifications
+- AWS Certified Developer - Associate
+- Google Professional Frontend Developer 

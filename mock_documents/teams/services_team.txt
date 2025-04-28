@@ -1,0 +1,14 @@
+# Services Team
+
+**Team lead**: Olivia Brown
+
+## Members:
+- Ethan Taylor (Senior Services Engineer)
+- Isabella Garcia (Services Engineer)
+- Noah Anderson (Services Engineer)
+
+## Focus area:
+- Microservices development
+- Service integration
+- API gateway management
+- Service monitoring 

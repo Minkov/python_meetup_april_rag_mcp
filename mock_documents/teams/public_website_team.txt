@@ -1,0 +1,14 @@
+# Public Website Team
+
+**Team lead**: Michael Chen
+
+## Members:
+- Emily Rodriguez (Senior Frontend Engineer)
+- David Kim (Frontend Engineer)
+- Alex Thompson (Frontend Engineer)
+
+## Focus area:
+- User interface development
+- Frontend architecture
+- Web performance optimization
+- Cross-browser compatibility 

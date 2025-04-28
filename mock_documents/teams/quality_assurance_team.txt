@@ -1,0 +1,16 @@
+# Quality Assurance Team
+
+**Team lead**: Jennifer Lee
+
+## Members:
+- Christopher Brown (Senior QA Engineer)
+- Madison Wilson (QA Engineer)
+- Benjamin Taylor (QA Engineer)
+
+## Focus area:
+- Manual and automated testing
+- Quality assurance processes
+- Test automation framework
+- Performance testing
+- Accessibility testing
+- API testing 

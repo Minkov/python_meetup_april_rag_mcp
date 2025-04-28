@@ -1,0 +1,37 @@
+# Interview Notes - Christopher Brown
+
+## Position: Technical Support Manager
+## Interview Date: 2024-03-05
+
+### Technical Assessment
+- Basic understanding of technical support operations
+- Limited knowledge of advanced support tools
+- Some gaps in technical expertise
+- Basic understanding of ITIL framework
+
+### Leadership & Management
+- Adequate team management skills
+- Basic understanding of metrics and KPIs
+- Limited experience with complex problem-solving
+- Basic understanding of remote team management
+
+### Process Improvement
+- Basic support process strategies
+- Limited documentation experience
+- Basic understanding of customer experience
+- Limited knowledge of support automation
+
+### Soft Skills
+- Good communication skills
+- Adequate leadership presence
+- Basic collaborative approach
+- Limited technical explanation skills
+
+### Areas of Concern
+- Limited technical expertise
+- Basic understanding of support tools
+- Limited experience with complex support scenarios
+- Basic knowledge of support automation
+
+### Overall Assessment
+Candidate has adequate leadership skills but lacks some technical expertise. Could be a good fit with proper training and mentorship. Shows potential for growth but may need additional support in technical areas. 

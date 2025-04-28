@@ -1,0 +1,40 @@
+# Technical Support Manager - Customer Success Team
+- Position: Technical Support Manager
+- Level: Manager
+- Team: Customer Success Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Customer Success Team as a Technical Support Manager and lead our technical support operations. You'll be responsible for managing a team of support engineers, ensuring high-quality customer service, and driving continuous improvement in our support processes.
+
+## Requirements:
+- 5+ years of experience in technical support or customer service
+- 2+ years of experience managing technical support teams
+- Strong technical background with ability to understand complex systems
+- Experience with support ticketing systems (Zendesk, Jira, etc.)
+- Knowledge of customer service best practices and metrics
+- Excellent leadership and team management skills
+- Strong problem-solving and decision-making abilities
+- Bachelor's degree in Computer Science or related field
+- Outstanding communication and interpersonal skills
+
+## Responsibilities:
+- Lead and mentor a team of technical support engineers
+- Develop and implement support processes and best practices
+- Monitor and improve support metrics and KPIs
+- Handle escalations and complex customer issues
+- Collaborate with product and engineering teams
+- Create and maintain support documentation
+- Conduct regular team meetings and performance reviews
+- Drive customer satisfaction and retention
+- Participate in on-call rotation for critical issues
+
+## Nice to Have:
+- Experience with SaaS products and services
+- Knowledge of ITIL or similar service management frameworks
+- Familiarity with customer success platforms
+- Understanding of data analytics and reporting
+- Experience with remote team management
+- Knowledge of support automation tools
+- Background in software development or system administration 

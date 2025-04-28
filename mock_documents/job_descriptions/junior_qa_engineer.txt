@@ -1,0 +1,38 @@
+# Junior QA Engineer - Quality Assurance Team
+- Position: QA Engineer
+- Level: Junior
+- Team: Quality Assurance Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Quality Assurance Team as a Junior QA Engineer and help ensure the quality and reliability of our software products. You'll work closely with developers and product managers to identify and prevent issues before they reach our users.
+
+## Requirements:
+- 1+ year of experience in software testing or quality assurance
+- Basic understanding of software development lifecycle
+- Familiarity with testing methodologies and best practices
+- Knowledge of web technologies and browsers
+- Experience with bug tracking systems (Jira, Bugzilla, etc.)
+- Strong attention to detail and analytical skills
+- Good written and verbal communication skills
+- Bachelor's degree in Computer Science or related field (or equivalent experience)
+
+## Responsibilities:
+- Execute test cases and document test results
+- Identify, document, and track software defects
+- Perform functional, regression, and integration testing
+- Collaborate with developers to reproduce and resolve issues
+- Participate in test planning and test case development
+- Help maintain and update test documentation
+- Assist in setting up and maintaining test environments
+- Contribute to the improvement of QA processes
+
+## Nice to Have:
+- Experience with automated testing tools (Selenium, Cypress, etc.)
+- Knowledge of programming languages (JavaScript, Python, etc.)
+- Familiarity with API testing tools (Postman, etc.)
+- Understanding of CI/CD pipelines
+- Experience with performance testing
+- Knowledge of accessibility testing
+- Basic understanding of databases and SQL 

@@ -1,0 +1,37 @@
+# Interview Notes - David Chen
+
+## Position: Data Engineer
+## Interview Date: 2024-03-14
+
+### Technical Assessment
+- Basic understanding of data engineering concepts
+- Struggled with complex SQL queries
+- Limited experience with distributed systems
+- Knowledge gaps in data modeling
+
+### System Design
+- Proposed solutions lacked scalability
+- Did not consider data quality aspects
+- Weak understanding of data pipeline architecture
+- Limited consideration of error handling
+
+### Coding Exercise
+- Incomplete solution
+- Poor code organization
+- Missing error handling
+- No consideration for edge cases
+
+### Soft Skills
+- Communication was unclear
+- Struggled to explain technical decisions
+- Limited collaboration experience
+- Defensive when receiving feedback
+
+### Areas of Concern
+- Lack of practical experience with large-scale data systems
+- Weak problem-solving skills
+- Poor understanding of data engineering best practices
+- Limited knowledge of modern data stack
+
+### Overall Assessment
+Candidate does not meet the requirements for the Data Platform Team. Technical skills and experience are below the expected level.

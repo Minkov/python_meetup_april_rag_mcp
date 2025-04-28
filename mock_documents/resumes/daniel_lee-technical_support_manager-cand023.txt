@@ -1,0 +1,56 @@
+# Daniel Lee
+## Technical Support Manager
+
+### Contact Information
+- Email: daniel.lee@email.com
+- Phone: (555) 901-2345
+- Location: Seattle, WA
+- LinkedIn: linkedin.com/in/daniellee
+
+### Summary
+Technical Support Manager with 6 years of experience in leading technical support teams and driving customer success. Strong background in SaaS support, team management, and process optimization.
+
+### Skills
+- Team Leadership & Management
+- Technical Support Operations
+- Customer Success Management
+- Support Process Optimization
+- Zendesk, Jira, ServiceNow
+- ITIL Framework
+- Data Analytics & Reporting
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**SaaS Solutions Inc.** | Mar 2021 - Present
+- Lead a team of 8 technical support engineers
+- Improved customer satisfaction score from 82% to 92%
+- Implemented support automation solutions
+- Reduced average resolution time by 35%
+- Created and maintained support documentation
+- Established performance metrics and KPIs
+- Led cross-functional collaboration with product teams
+
+#### Senior Support Engineer
+**CloudTech Support** | Jan 2019 - Feb 2021
+- Managed customer escalations
+- Created support processes and workflows
+- Mentored junior support engineers
+- Developed training materials
+- Participated in on-call rotation
+
+### Education
+#### Master of Science in Information Technology
+**University of Washington** | 2017 - 2019
+- GPA: 3.8/4.0
+- Focus: Technology Management
+
+#### Bachelor of Science in Computer Science
+**University of Washington** | 2013 - 2017
+- GPA: 3.7/4.0
+- Relevant coursework: Customer Service, Team Management, Software Engineering
+
+### Certifications
+- ITIL v4 Foundation
+- AWS Certified Cloud Practitioner
+- Zendesk Administrator Certification 

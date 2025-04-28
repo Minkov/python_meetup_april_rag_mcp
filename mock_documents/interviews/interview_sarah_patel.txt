@@ -1,0 +1,37 @@
+# Interview Notes - Sarah Patel
+
+## Position: Backend Engineer
+## Interview Date: 2024-03-09
+
+### Technical Assessment
+- Strong Java and Spring Boot knowledge
+- Excellent understanding of microservices architecture
+- Demonstrated expertise in system design
+- Good grasp of cloud technologies
+
+### System Design
+- Presented scalable and maintainable solutions
+- Considered edge cases and error handling
+- Good understanding of distributed systems
+- Strong focus on performance optimization
+
+### Coding Exercise
+- Completed the task successfully
+- Clean, well-structured code
+- Good error handling
+- Comprehensive test coverage
+
+### Soft Skills
+- Technical communication was clear but lacked empathy
+- Struggled with team collaboration
+- Limited interest in mentoring others
+- Defensive when receiving feedback
+
+### Areas of Concern
+- Strong technical skills but poor team fit
+- Limited interest in team culture
+- Not aligned with company values
+- Poor collaboration skills
+
+### Overall Assessment
+Candidate has excellent technical skills but would not be a good fit for our team culture. Technical abilities are strong, but the lack of collaboration and team-oriented mindset is a significant concern. 

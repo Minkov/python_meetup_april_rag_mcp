@@ -1,0 +1,50 @@
+John Doe
+Senior Software Engineer
+john.doe@email.com | (555) 123-4567 | linkedin.com/in/johndoe | github.com/johndoe
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Software Engineer with 7+ years of experience in full-stack development, specializing in scalable cloud solutions and data processing systems. Proven track record of delivering high-impact projects and mentoring junior developers.
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | ABC Tech
+January 2018 - Present
+• Architected and implemented data processing pipelines processing 1TB+ daily, reducing processing time by 60%
+• Led migration from monolithic architecture to microservices, resulting in 40% improved system reliability
+• Developed RESTful APIs serving 1M+ daily requests with 99.9% uptime
+• Implemented CI/CD pipelines using Jenkins and Docker, reducing deployment time by 70%
+• Mentored 5 junior developers and conducted bi-weekly code reviews
+• Technologies: Python, AWS (S3, EC2, Lambda, ECS), MongoDB, PostgreSQL, Docker, Kubernetes
+
+Software Engineer | XYZ Solutions
+June 2016 - December 2017
+• Developed and maintained 3 customer-facing web applications using React and Node.js
+• Implemented real-time features using WebSocket, reducing latency by 50%
+• Optimized database queries, improving application response time by 30%
+• Technologies: React, Node.js, Express, MongoDB, Redis, WebSocket
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology | 2012 - 2016
+• GPA: 3.8/4.0
+• Dean's List: 2013-2016
+• Senior Project: Distributed Computing System
+
+TECHNICAL SKILLS
+• Programming Languages: Python, JavaScript, Java, TypeScript
+• Frontend: React, Redux, HTML5, CSS3, SASS
+• Backend: Node.js, Express, Django, Spring Boot
+• Databases: MongoDB, PostgreSQL, Redis
+• Cloud & DevOps: AWS, Docker, Kubernetes, Jenkins, Git
+• Testing: Jest, PyTest, Selenium
+• Other: Agile/Scrum, JIRA, Confluence, RESTful APIs, Microservices
+
+CERTIFICATIONS
+• AWS Certified Solutions Architect - Associate
+• MongoDB Certified Developer
+• Google Cloud Professional Developer
+
+PROFESSIONAL DEVELOPMENT
+• Regular contributor to open-source projects
+• Speaker at local tech meetups
+• Active member of Python and JavaScript communities 

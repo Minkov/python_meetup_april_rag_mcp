@@ -1,0 +1,26 @@
+Draft an email explaining which openings best match Doncho's qualifications with actual job descriptions
+Draft an email explaining which openings best match Mark's qualifications with actual job descriptions and why
+Draft an email for David Chen explaining which openings best match David Chen's qualifications with actual job descriptions and why
+Draft a friendly email telling Mark that he is rejected for the Senior engineer position, yet he can have a follow-up interview for the Manager position in the Customer Success
+Draft a friendly email telling Doncho that he is rejected for the Junior web engineer position, yet he can have a follow-up interview for the Junior data engineer position. Include the job description for the Junior data engineer position and benefits of the job.
+
+Draft an email explaining which openings best match Mark's qualifications with actual job descriptions and why
+
+Based on Alex Kim's resume and interview notes, what specific skills and experiences make him suitable for the Junior Data Engineer role, and what potential gaps might need to be addressed during onboarding if we decide to hire him?
+
+Only emails of fit candidates for the Senior position in the Data Platform team
+
+Top 3 candidates for the Technical Support Manager in the Customer success team
+
+Top 3 candidates for the job of Senior data engineer in the Data Platform team
+List only the emails of shortlisted candidates for the Data engineer role in the Data Platform team.
+
+Generate a complete comparison in a table between David Chen, Mark Peterson and John Doe for the job of Senior data engineer in the Data Platform team
+
+
+Explain details for the Senior data engineer job opening in the Data Platform team
+Junior data engineer job opening in the Data Platform team
+Explain details for the Senior Software Engineer Public Website Team for a non-technical person
+
+Explain to me the difference between a Mid-Level Software Engineer and a Junior Data Engineer.
+

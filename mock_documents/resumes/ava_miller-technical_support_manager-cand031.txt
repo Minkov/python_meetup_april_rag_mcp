@@ -1,0 +1,50 @@
+# Ava Miller
+## Technical Support Manager
+
+### Contact Information
+- Email: ava.miller@email.com
+- Phone: (555) 789-0123
+- Location: Phoenix, AZ
+- LinkedIn: linkedin.com/in/avamiller
+
+### Summary
+Technical Support Manager with 4 years of experience in customer service. Strong focus on sales and customer retention, with limited technical expertise and team management experience.
+
+### Skills
+- Customer Service
+- Sales Management
+- Basic Team Management
+- Limited Technical Support
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Support
+
+### Experience
+#### Technical Support Manager
+**CustomerCare Inc.** | Jan 2021 - Present
+- Managed a team of 5 customer service representatives
+- Focused on customer retention and sales
+- Implemented basic support processes
+- Improved customer retention by 20%
+- Created basic documentation
+- Established sales metrics
+- Limited technical support experience
+
+#### Customer Service Manager
+**Sales Solutions Corp** | Mar 2019 - Dec 2020
+- Managed customer service team
+- Focused on sales targets
+- Created basic processes
+- Limited technical knowledge
+- Participated in on-call rotation
+
+### Education
+#### Bachelor of Science in Business Administration
+**Arizona State University** | 2015 - 2019
+- GPA: 3.1/4.0
+- Relevant coursework: Customer Service, Sales Management, Basic Business
+
+### Certifications
+- Basic ITIL Knowledge
+- Sales Management Certification 

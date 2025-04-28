@@ -1,0 +1,34 @@
+# Interview Notes - Sophia Rodriguez
+
+## Position: QA Engineer
+## Interview Date: 2024-03-13
+
+### Technical Assessment
+- Strong knowledge of test automation tools and frameworks
+- Excellent understanding of testing methodologies
+- Demonstrated expertise in API testing
+- Good grasp of performance testing concepts
+
+### System Design
+- Well-thought-out test strategy
+- Comprehensive test coverage approach
+- Good understanding of test automation architecture
+- Strong focus on maintainability
+
+### Coding Exercise
+- Completed the automation task successfully
+- Clean, well-structured test code
+- Good error handling and reporting
+- Comprehensive test cases
+
+### Soft Skills
+- Excellent communication skills
+- Collaborative approach
+- Strong attention to detail
+- Good at explaining technical concepts
+
+### Areas of Concern
+- None significant
+
+### Overall Assessment
+Strong candidate with excellent technical skills and good cultural fit. Would be a valuable addition to the Quality Assurance Team. 

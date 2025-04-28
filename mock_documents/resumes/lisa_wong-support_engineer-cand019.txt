@@ -1,0 +1,51 @@
+# Lisa Wong
+## Support Engineer
+
+### Contact Information
+- Email: lisa.wong@email.com
+- Phone: (555) 567-8901
+- Location: Portland, OR
+- LinkedIn: linkedin.com/in/lisawong
+
+### Summary
+Support Engineer with 4 years of experience in technical customer support, troubleshooting, and knowledge base management. Strong background in customer success and support automation.
+
+### Skills
+- Technical Troubleshooting
+- Customer Success Management
+- Knowledge Base Management
+- Support Automation
+- SQL, Python
+- JIRA, Zendesk
+- Documentation
+
+### Experience
+#### Senior Support Engineer
+**CustomerFirst Inc.** | Mar 2021 - Present
+- Led technical support team of 5 engineers
+- Reduced average resolution time by 30%
+- Implemented support automation solutions
+- Created and maintained knowledge base
+- Mentored junior support engineers
+
+#### Support Engineer
+**TechSupport Solutions** | Jan 2019 - Feb 2021
+- Provided technical support to enterprise customers
+- Created technical documentation
+- Implemented support process improvements
+- Assisted in knowledge base development
+
+### Education
+#### Bachelor of Science in Information Technology
+**Portland State University** | 2015 - 2019
+- GPA: 3.7/4.0
+- Relevant coursework: Customer Service, Technical Support, Database Management
+
+### Projects
+- Developed automated support ticket routing system
+- Created comprehensive troubleshooting guides
+- Implemented customer feedback collection system
+
+### Certifications
+- ITIL Foundation
+- AWS Certified Cloud Practitioner 

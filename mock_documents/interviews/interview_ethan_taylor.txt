@@ -1,0 +1,38 @@
+# Interview Notes - Ethan Taylor
+
+## Position: Technical Support Manager
+## Interview Date: 2024-03-01
+
+### Technical Assessment
+- Strong technical skills
+- Good understanding of system administration
+- Limited knowledge of customer success
+- Basic understanding of ITIL framework
+
+### Leadership & Management
+- Limited team management skills
+- Focus on technical metrics only
+- Poor understanding of customer service
+- Limited experience with remote team management
+
+### Process Improvement
+- Technical process strategies only
+- Limited documentation experience
+- Poor understanding of customer experience
+- Basic knowledge of support automation
+
+### Soft Skills
+- Technical communication only
+- Limited leadership presence
+- Poor collaborative approach
+- Limited customer service skills
+
+### Areas of Concern
+- Limited team management experience
+- Poor understanding of customer success
+- Limited experience with customer-focused scenarios
+- Basic knowledge of support tools
+- Poor alignment with company values
+
+### Overall Assessment
+Candidate has strong technical skills but lacks essential team management and customer service experience. Would not be a good fit for the Customer Success Team. Technical abilities are strong, but the lack of leadership and customer-focused mindset is a significant concern. 

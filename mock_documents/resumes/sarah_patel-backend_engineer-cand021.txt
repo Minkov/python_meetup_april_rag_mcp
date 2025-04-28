@@ -1,0 +1,56 @@
+# Sarah Patel
+## Backend Engineer
+
+### Contact Information
+- Email: sarah.patel@email.com
+- Phone: (555) 789-0123
+- Location: Boston, MA
+- LinkedIn: linkedin.com/in/sarahpatel
+
+### Summary
+Senior Backend Engineer with 7 years of experience in building scalable and high-performance systems. Expert in Java, Spring Boot, and microservices architecture. Strong focus on technical excellence and system optimization.
+
+### Skills
+- Java, Spring Boot
+- Microservices Architecture
+- RESTful APIs
+- SQL, NoSQL Databases
+- Docker, Kubernetes
+- AWS, GCP
+- CI/CD, Git
+
+### Experience
+#### Senior Backend Engineer
+**Enterprise Systems Inc.** | Jan 2020 - Present
+- Led the development of microservices architecture
+- Improved system performance by 60%
+- Implemented security best practices
+- Designed and implemented API gateway
+- Optimized database queries and caching
+
+#### Backend Engineer
+**TechSolutions Corp** | Mar 2017 - Dec 2019
+- Developed and maintained RESTful APIs
+- Implemented database optimizations
+- Created automated testing frameworks
+- Participated in system architecture design
+
+### Education
+#### Master of Science in Computer Science
+**Massachusetts Institute of Technology** | 2015 - 2017
+- GPA: 3.9/4.0
+- Thesis: "High-Performance Microservices Architecture"
+
+#### Bachelor of Science in Computer Science
+**Boston University** | 2011 - 2015
+- GPA: 3.8/4.0
+- Relevant coursework: Distributed Systems, Database Design, Software Architecture
+
+### Projects
+- Built a real-time data processing system
+- Developed a scalable API gateway
+- Created a microservices monitoring platform
+
+### Certifications
+- AWS Certified Solutions Architect
+- Oracle Certified Professional, Java SE 11 

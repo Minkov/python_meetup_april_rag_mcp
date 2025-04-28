@@ -1,0 +1,34 @@
+# Interview Notes - Emma Wilson
+
+## Position: Frontend Engineer
+## Interview Date: 2024-03-15
+
+### Technical Assessment
+- Strong React and TypeScript knowledge
+- Excellent problem-solving skills
+- Demonstrated deep understanding of web performance optimization
+- Showed good grasp of modern frontend architectures
+
+### System Design
+- Presented clear and scalable solutions
+- Considered edge cases and error handling
+- Good understanding of component design patterns
+- Strong focus on maintainability and reusability
+
+### Coding Exercise
+- Completed the task within time limit
+- Clean, well-structured code
+- Good error handling
+- Comprehensive test coverage
+
+### Soft Skills
+- Excellent communication skills
+- Collaborative approach
+- Strong team player
+- Good at explaining technical concepts
+
+### Areas of Concern
+- None significant
+
+### Overall Assessment
+Strong candidate with excellent technical skills and good cultural fit. Would be a great addition to the Public Website Team. 

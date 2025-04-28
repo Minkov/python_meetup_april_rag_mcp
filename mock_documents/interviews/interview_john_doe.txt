@@ -1,0 +1,14 @@
+# Interview notes John Doe (cand009)
+Date: 2023-11-15
+
+## Technical Assessment:
+1. Strong Python skills demonstrated in coding exercise
+2. Good understanding of database concepts
+3. Familiar with AWS services, particularly S3 and Lambda
+
+## Area for Improvement:
+- Limited experience with large-scale data processing
+- No experience with Kubernetes
+
+## Overall assessment:
+Promising candidate who would be a good fit for the Senior Software Engineer role on the Data team. 

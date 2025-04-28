@@ -1,0 +1,40 @@
+# Senior Data Engineer - Data Platform Team
+- Position: Data Engineer
+- Level: Senior
+- Team: Data Platform Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Data Platform Team as a Senior Data Engineer and help build and maintain our data infrastructure. You'll be responsible for designing and implementing scalable data pipelines, ensuring data quality, and enabling data-driven decision making across the organization.
+
+## Requirements:
+- 5+ years of experience in data engineering or related field
+- Expert-level proficiency in Python and SQL
+- Deep knowledge of data warehousing concepts and technologies
+- Experience with big data technologies (Spark, Hadoop, etc.)
+- Strong understanding of ETL/ELT processes and data modeling
+- Experience with cloud data platforms (AWS, GCP, or Azure)
+- Knowledge of data quality and testing frameworks
+- Bachelor's degree in Computer Science or related field
+- Excellent problem-solving and communication skills
+
+## Responsibilities:
+- Design and implement scalable data pipelines and ETL processes
+- Architect and maintain data warehouse solutions
+- Develop and optimize data models for analytics
+- Implement data quality checks and monitoring
+- Collaborate with data scientists and analysts
+- Mentor junior data engineers
+- Drive technical decisions and best practices
+- Participate in on-call rotation and incident response
+- Contribute to technical documentation
+
+## Nice to Have:
+- Experience with real-time data processing
+- Knowledge of machine learning pipelines
+- Familiarity with data governance and security
+- Experience with containerization (Docker, Kubernetes)
+- Understanding of data visualization tools
+- Contributions to open-source data projects
+- Experience with streaming data technologies (Kafka, etc.) 

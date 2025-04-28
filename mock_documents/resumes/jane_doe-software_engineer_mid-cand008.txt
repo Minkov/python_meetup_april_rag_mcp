@@ -1,0 +1,56 @@
+Jane Doe
+Senior Frontend Developer
+jane.doe@email.com | (555) 234-5678 | linkedin.com/in/janedoe | github.com/janedoe
+
+PROFESSIONAL SUMMARY
+Detail-oriented Frontend Developer with 5+ years of experience building responsive, accessible, and performant web applications. Specialized in React and TypeScript with a strong focus on user experience and code quality. Proven track record of delivering high-impact features and mentoring junior developers.
+
+PROFESSIONAL EXPERIENCE
+
+Senior Frontend Developer | TechCorp
+January 2020 - Present
+• Led development of new customer portal serving 500K+ users, improving user engagement by 45%
+• Implemented comprehensive accessibility features achieving WCAG 2.1 AA compliance
+• Reduced bundle size by 40% through code splitting and lazy loading
+• Mentored 3 junior developers and conducted bi-weekly code reviews
+• Established frontend testing strategy, increasing test coverage to 85%
+• Technologies: React, TypeScript, Redux, Jest, Cypress, Webpack
+
+Frontend Developer | WebSolutions
+June 2018 - December 2019
+• Developed and maintained 5 e-commerce platforms using Vue.js
+• Implemented performance optimizations reducing load times by 40%
+• Created reusable component library used across 10+ projects
+• Set up CI/CD pipelines reducing deployment time by 60%
+• Technologies: Vue.js, JavaScript, SCSS, Webpack, Jest
+
+EDUCATION
+Bachelor of Science in Computer Science
+State University | 2014 - 2018
+• GPA: 3.7/4.0
+• Relevant Coursework: Web Development, User Interface Design, Database Systems
+• Senior Project: Real-time Collaborative Editor
+
+TECHNICAL SKILLS
+• Frontend: React, Vue.js, TypeScript, JavaScript, HTML5, CSS3/SASS
+• State Management: Redux, Vuex, Context API
+• Testing: Jest, React Testing Library, Cypress, Storybook
+• Build Tools: Webpack, Vite, Babel
+• Version Control: Git, GitHub
+• Other: Agile/Scrum, JIRA, Figma, Accessibility (WCAG)
+
+CERTIFICATIONS
+• AWS Certified Developer - Associate
+• Google Mobile Web Specialist
+• Accessibility Certification (WCAG 2.1)
+
+PROFESSIONAL DEVELOPMENT
+• Regular contributor to open-source projects
+• Speaker at local frontend meetups
+• Active member of React and TypeScript communities
+• Completed 20+ Udemy courses on advanced frontend topics
+
+PUBLICATIONS
+• Author: "Building Accessible React Applications" (2022)
+• Contributor: "Frontend Performance Optimization Guide" (2021)
+• Regular blog posts on Medium about frontend development 

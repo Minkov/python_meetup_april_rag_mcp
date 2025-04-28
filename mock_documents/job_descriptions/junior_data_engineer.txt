@@ -1,0 +1,38 @@
+# Junior Data Engineer - Data Platform Team
+- Position: Data Engineer
+- Level: Junior
+- Team: Data Platform Team
+- Location: Remote (US/Canada) or Hybrid (San Francisco, CA)
+- Employment Type: Full-time
+
+## About the Role:
+Join our Data Platform Team as a Junior Data Engineer and help build and maintain our data infrastructure. You'll work alongside senior engineers to implement data pipelines and contribute to our data platform's growth.
+
+## Requirements:
+- 1+ year of experience in data engineering or related field
+- Basic proficiency in Python and SQL
+- Understanding of data warehousing concepts
+- Familiarity with ETL processes and data modeling
+- Knowledge of version control systems (Git)
+- Good problem-solving and analytical skills
+- Bachelor's degree in Computer Science or related field
+- Strong communication and collaboration skills
+
+## Responsibilities:
+- Assist in developing and maintaining data pipelines
+- Write and optimize SQL queries
+- Help implement data quality checks
+- Document data processes and workflows
+- Collaborate with data scientists and analysts
+- Participate in code reviews and team discussions
+- Learn and apply data engineering best practices
+- Contribute to technical documentation
+
+## Nice to Have:
+- Experience with cloud platforms (AWS, GCP, or Azure)
+- Knowledge of big data technologies (Spark, Hadoop)
+- Familiarity with data visualization tools
+- Understanding of machine learning concepts
+- Experience with containerization (Docker)
+- Basic knowledge of data governance
+- Interest in data quality and testing 

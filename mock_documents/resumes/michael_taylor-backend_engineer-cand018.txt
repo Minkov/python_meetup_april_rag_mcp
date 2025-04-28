@@ -1,0 +1,56 @@
+# Michael Taylor
+## Backend Engineer
+
+### Contact Information
+- Email: michael.taylor@email.com
+- Phone: (555) 456-7890
+- Location: New York, NY
+- LinkedIn: linkedin.com/in/michaeltaylor
+
+### Summary
+Backend Engineer with 6 years of experience in building scalable and high-performance systems. Expert in Java, Spring Boot, and microservices architecture.
+
+### Skills
+- Java, Spring Boot
+- Microservices Architecture
+- RESTful APIs
+- SQL, NoSQL Databases
+- Docker, Kubernetes
+- AWS, GCP
+- CI/CD, Git
+
+### Experience
+#### Senior Backend Engineer
+**Enterprise Solutions Inc.** | Jan 2020 - Present
+- Led the development of microservices architecture
+- Improved system performance by 50%
+- Implemented security best practices
+- Mentored junior developers
+- Designed and implemented API gateway
+
+#### Backend Engineer
+**TechInnovate Corp** | Mar 2017 - Dec 2019
+- Developed and maintained RESTful APIs
+- Implemented database optimizations
+- Created automated testing frameworks
+- Participated in system architecture design
+
+### Education
+#### Master of Science in Computer Science
+**Columbia University** | 2015 - 2017
+- GPA: 3.8/4.0
+- Thesis: "Scalable Microservices Architecture"
+
+#### Bachelor of Science in Computer Science
+**New York University** | 2011 - 2015
+- GPA: 3.7/4.0
+- Relevant coursework: Distributed Systems, Database Design, Software Architecture
+
+### Projects
+- Built a real-time data processing system
+- Developed a scalable API gateway
+- Created a microservices monitoring platform
+
+### Certifications
+- AWS Certified Solutions Architect
+- Oracle Certified Professional, Java SE 11 

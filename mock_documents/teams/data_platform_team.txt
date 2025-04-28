@@ -1,0 +1,15 @@
+# Data Platform Team
+
+**Team lead**: Sarah Johnson
+
+## Members:
+- Mark Smith (Senior Data Engineer)
+- Lisa Wong (Data Engineer)
+- Tom Brown (Junior Data Engineer)
+
+## Focus area:
+- Data pipeline development
+- ETL/ELT processes
+- Data warehouse management
+- Data quality and governance
+- ML model deployment infrastructure 

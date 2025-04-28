@@ -1,0 +1,50 @@
+# Noah Anderson
+## Technical Support Manager
+
+### Contact Information
+- Email: noah.anderson@email.com
+- Phone: (555) 678-9012
+- Location: Dallas, TX
+- LinkedIn: linkedin.com/in/noahanderson
+
+### Summary
+Technical Support Manager with 5 years of experience in IT operations. Strong focus on system administration and infrastructure management, with limited team leadership and customer service experience.
+
+### Skills
+- System Administration
+- Infrastructure Management
+- Basic Team Management
+- Limited Customer Service
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Support
+
+### Experience
+#### Technical Support Manager
+**IT Operations Inc.** | Jan 2021 - Present
+- Managed a team of 6 IT support engineers
+- Focused on infrastructure maintenance
+- Implemented basic support processes
+- Reduced system downtime by 15%
+- Created technical documentation
+- Established basic performance metrics
+- Limited customer interaction
+
+#### IT Support Engineer
+**Tech Solutions Corp** | Mar 2019 - Dec 2020
+- Managed system infrastructure
+- Handled technical issues
+- Created system documentation
+- Limited team collaboration
+- Participated in on-call rotation
+
+### Education
+#### Bachelor of Science in Information Technology
+**University of Texas at Dallas** | 2015 - 2019
+- GPA: 3.2/4.0
+- Relevant coursework: System Administration, Network Management, Basic Programming
+
+### Certifications
+- Basic ITIL Knowledge
+- CompTIA Network+ Certification 

@@ -1,0 +1,14 @@
+# Core Team
+
+**Team lead**: James Wilson
+
+## Members:
+- Rachel Martinez (Senior Backend Engineer)
+- Daniel Lee (Backend Engineer)
+- Sophia Patel (Backend Engineer)
+
+## Focus area:
+- Core system architecture
+- API development
+- System scalability
+- Performance optimization

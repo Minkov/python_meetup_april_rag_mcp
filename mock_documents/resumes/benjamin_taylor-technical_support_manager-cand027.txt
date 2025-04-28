@@ -1,0 +1,50 @@
+# Benjamin Taylor
+## Technical Support Manager
+
+### Contact Information
+- Email: benjamin.taylor@email.com
+- Phone: (555) 345-6789
+- Location: Portland, OR
+- LinkedIn: linkedin.com/in/benjamintaylor
+
+### Summary
+Technical Support Manager with 5 years of experience in technical support and team management. Strong background in system administration and basic support operations, with some gaps in customer success experience.
+
+### Skills
+- Team Leadership & Management
+- System Administration
+- Technical Support Operations
+- Basic Customer Service
+- Zendesk, Jira
+- Basic ITIL Knowledge
+- Data Analytics
+- Remote Team Management
+
+### Experience
+#### Technical Support Manager
+**TechSupport Inc.** | Jan 2021 - Present
+- Lead a team of 7 technical support engineers
+- Improved system uptime from 95% to 99%
+- Implemented basic support processes
+- Reduced average resolution time by 15%
+- Created technical documentation
+- Established basic performance metrics
+- Collaborated with IT teams
+
+#### System Administrator
+**IT Solutions Corp** | Mar 2019 - Dec 2020
+- Managed system infrastructure
+- Handled technical support cases
+- Created system documentation
+- Trained support staff
+- Participated in on-call rotation
+
+### Education
+#### Bachelor of Science in Computer Science
+**Portland State University** | 2015 - 2019
+- GPA: 3.4/4.0
+- Relevant coursework: System Administration, Network Management, Basic Programming
+
+### Certifications
+- Basic ITIL Knowledge
+- CompTIA A+ Certification 

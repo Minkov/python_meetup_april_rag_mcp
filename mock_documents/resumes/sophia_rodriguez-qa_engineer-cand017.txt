@@ -1,0 +1,51 @@
+# Sophia Rodriguez
+## QA Engineer
+
+### Contact Information
+- Email: sophia.rodriguez@email.com
+- Phone: (555) 345-6789
+- Location: Austin, TX
+- LinkedIn: linkedin.com/in/sophiarodriguez
+
+### Summary
+QA Engineer with 3 years of experience in both manual and automated testing. Strong background in test automation, performance testing, and quality assurance processes.
+
+### Skills
+- Selenium, Cypress, Playwright
+- Python, JavaScript
+- Test Automation Frameworks
+- API Testing (Postman, REST Assured)
+- Performance Testing (JMeter)
+- CI/CD Integration
+- Test Planning and Strategy
+
+### Experience
+#### QA Engineer
+**QualityFirst Inc.** | Mar 2021 - Present
+- Developed and maintained automated test suites
+- Implemented API testing framework
+- Conducted performance testing for critical applications
+- Created and executed test plans for major releases
+- Mentored junior QA engineers
+
+#### Junior QA Engineer
+**TestPro Solutions** | Jan 2020 - Feb 2021
+- Performed manual testing for web applications
+- Created test cases and test documentation
+- Participated in agile development process
+- Assisted in test automation implementation
+
+### Education
+#### Bachelor of Science in Computer Science
+**University of Texas at Austin** | 2016 - 2020
+- GPA: 3.6/4.0
+- Relevant coursework: Software Testing, Quality Assurance, Software Engineering
+
+### Projects
+- Developed a custom test automation framework
+- Created a performance testing suite for e-commerce platform
+- Implemented continuous testing in CI/CD pipeline
+
+### Certifications
+- ISTQB Certified Tester
+- AWS Certified DevOps Engineer 
