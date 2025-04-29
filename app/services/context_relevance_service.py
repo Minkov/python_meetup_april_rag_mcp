@@ -1,12 +1,10 @@
-from typing import List, Dict, Any, Union
+from typing import List, Union
 import logging
-import json
-from openai import OpenAI
 
 from app.ai_service import AiServiceCapability, AiServicePrompt, get_ai_service
 from app.configs import FAST_GEMINI_MODEL
-from app.schemas.base import AiResponseBaseModel
 from app.schemas.document_results import DocumentResults
+from app.schemas.relevance_schemas import RelevanceAssessment
 
 logger = logging.getLogger(__name__)
 
@@ -15,20 +13,16 @@ class ContextRelevanceService:
     def __init__(
         self,
         model: str = FAST_GEMINI_MODEL,
-        max_tokens: int = 1000,
-        temperature: float = 0.3,
     ):
         self.ai_service = get_ai_service(AiServiceCapability.FAST)
         self.model = model
-        self.max_tokens = max_tokens
-        self.temperature = temperature
 
     def assess_relevance(
         self,
         query: str,
         context: Union[str, List[DocumentResults]],
         format_context_func: callable
-    ) -> Dict[str, Any]:
+    ) -> RelevanceAssessment:
         """Assess if the context is relevant and sufficient for answering the query.
 
         Args:
@@ -70,41 +64,17 @@ Please assess if this context is relevant and sufficient for answering the query
             user_prompt=user_prompt
         )
 
-        class RelevanceAssessment(AiResponseBaseModel):
-            relevant: bool
-            relevance_score: float
-            explanation: str
-            missing_information: List[str]
-
         try:
             result = self.ai_service.generate_response(
                 response_model=RelevanceAssessment,
                 prompt=prompt,
             )
-            return result.model_dump()
+            return result
         except Exception as e:
             logger.error(f"Error assessing context relevance: {e}")
-            # Use direct OpenAI client as fallback
-            try:
-                response = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    temperature=0.3,
-                    max_tokens=1000,
-                    response_format={"type": "json_object"}
-                )
-
-                result = json.loads(response.choices[0].message.content)
-                return result
-            except Exception as e2:
-                logger.error(f"Fallback assessment also failed: {e2}")
-                return {
-                    "error": str(e),
-                    "relevant": False,
-                    "relevance_score": 0,
-                    "explanation": "Failed to assess context relevance due to an error",
-                    "missing_information": ["Unable to determine"]
-                } 
+            return RelevanceAssessment(
+                relevant=False,
+                relevance_score=0,
+                explanation="Failed to assess context relevance due to an error",
+                missing_information=[]
+            )

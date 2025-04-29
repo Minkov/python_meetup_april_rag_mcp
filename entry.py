@@ -181,6 +181,7 @@ def run_full_demo(populate_data=False):
     
     # Initialize the HR Intelligence System
     chat = Chat()
+    hr_system = HRIntelligenceSystem(openai_api_key=os.getenv("OPENAI_API_KEY"))
     
     # Add sample documents to the system only if populate_data is True
     if populate_data:
@@ -208,9 +209,9 @@ def run_full_demo(populate_data=False):
             
             print("\nResponse:")
             print("---------")
-            print(result["response"])
+            print(result.response)
             
-            print("\n(Retrieved from", len(result["retrieved_docs"]), "documents)")
+            print("\n(Retrieved from", len(result.retrieved_docs), "documents)")
             
         except Exception as e:
             print(f"An error occurred: {str(e)}")

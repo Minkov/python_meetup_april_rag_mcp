@@ -26,8 +26,8 @@ class Chat:
         
         result = self.hr_system.ask(query, context=conversation_context)
         
-        self.last_retrieved_docs = result["retrieved_docs"]
+        self.last_retrieved_docs = result.retrieved_docs
         
-        self.add_message("assistant", result["response"])
+        self.add_message("assistant", result.response)
         
         return result

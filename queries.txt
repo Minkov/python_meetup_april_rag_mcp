@@ -28,6 +28,7 @@ Identify all candidates that match the Manager position in the Customer Success 
 
 Collect all job openings step by step. Analyze the thoroughly. Give a detailed overview of each.
 Analyze all the job openings step by step. Give a brief overview of each.
+Analyze both David Chen and Mark Peterson using their meeting notes and resumes. Build a full report on  resumes and compare them step by step using tables, lists, the best formatting ever
 
 Generate a full report with tables, lists, and detailed summary of Doncho's interview.
 Evaluate the interview of Doncho. Search for relevant to his skills and experience job openings. Build a comprehensive report on his alignment with these job openings.

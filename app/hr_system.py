@@ -1,19 +1,25 @@
 from app.mcp import ModelContextProtocol
 from app.doc_store import DocumentStore
+from app.mcp import ModelContextProtocol
+from app.orcherstrator import RAGOrchestrator
 from app.vector_db import VectorDatabase
 from app.document_processor import DocumentProcessor
 from app.retriever import Retriever
 
 class HRIntelligenceSystem:
     def __init__(self, openai_api_key: str):
-        # Initialize components
         self.document_store = DocumentStore()
         self.vector_db = VectorDatabase(openai_api_key, enable_telemetry=False)
         self.document_processor = DocumentProcessor(self.vector_db)
         
         self.retriever = Retriever(self.vector_db)
-        
+        # self.mcp = ModelContextProtocol()
         self.mcp = ModelContextProtocol()
+
+        self.orchestrator = RAGOrchestrator(
+            retriever=self.retriever,
+            mcp=self.mcp,
+        )
         
     def add_job_description(self, text, metadata):
         """Add a job description to the system"""
@@ -41,21 +47,23 @@ class HRIntelligenceSystem:
         
     def ask(self, query, top_k=5, max_iterations=5, context=None):
         """Ask a question to the HR Intelligence System"""
-        retrieval_result = self.retriever.retrieve(
-            query, 
-            top_k=top_k,
-            max_iterations=max_iterations
-        )
+        result = self.orchestrator.process_query(query, conversation_context=context)
+        return result
+        # retrieval_result = self.retriever.retrieve(
+        #     query, 
+        #     top_k=top_k,
+        #     max_iterations=max_iterations
+        # )
 
-        retrieved_docs = retrieval_result["retrieved_docs"]
+        # retrieved_docs = retrieval_result["retrieved_docs"]
         
-        print(f"Original query: {query}")
-        print(f"Optimized queries: {retrieval_result['optimized_queries']}")
-        print(f"Retrieved {len(retrieved_docs)} documents after {max_iterations} max iterations")
+        # print(f"Original query: {query}")
+        # print(f"Optimized queries: {retrieval_result['optimized_queries']}")
+        # print(f"Retrieved {len(retrieved_docs)} documents after {max_iterations} max iterations")
 
-        response = self.mcp.generate_response(query, retrieved_docs, previous_context=context)
+        # response = self.mcp.generate_response(query, retrieved_docs, previous_context=context)
         
-        return {
-            "response": response,
-            "retrieved_docs": retrieved_docs
-        }
+        # return {
+        #     "response": response,
+        #     "retrieved_docs": retrieved_docs
+        # }

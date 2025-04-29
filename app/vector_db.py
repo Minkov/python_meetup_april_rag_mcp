@@ -1,14 +1,12 @@
 import time
 import logging
-from typing import List, Dict, Any, Optional, Tuple, Union
-import uuid
-from dataclasses import asdict
+from typing import List, Dict, Any, Optional, Union
 import re
 
 from openai import OpenAI
 import chromadb
 from chromadb.utils import embedding_functions
-from tenacity import retry, stop_after_attempt, wait_exponential, wait_random_exponential
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 from app.schemas.document_results import DocumentResults
 
