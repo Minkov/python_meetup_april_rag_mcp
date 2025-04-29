@@ -8,7 +8,7 @@ from pydantic import BaseModel
 import google.generativeai as genai
 from google.generativeai.types import GenerationConfig
 
-from app.configs import FAST_GEMINI_MODEL, FAST_OPENAI_MODEL, THINKING_OPENAI_MODEL
+from app.configs import FAST_GEMINI_MODEL, FAST_OPENAI_MODEL, THINKING_GEMINI_MODEL, THINKING_OPENAI_MODEL
 from app.schemas.base import AiResponseBaseModel
 
 
@@ -193,11 +193,11 @@ class GenimiAiService(AiServiceBase):
 def get_ai_service(capability: AiServiceCapability) -> AiServiceBase:
     """Get the appropriate AI service based on the capability."""
 
-    # if capability == AiServiceCapability.FAST:
-    #     return GenimiAiService(FAST_GEMINI_MODEL)
-    # elif capability == AiServiceCapability.THINKING:
-    #     return GenimiAiService(THINKING_GEMINI_MODEL)
     if capability == AiServiceCapability.FAST:
-        return OpenAIAiService(os.getenv("OPENAI_API_KEY"), FAST_OPENAI_MODEL)
+        return GenimiAiService(FAST_GEMINI_MODEL)
     elif capability == AiServiceCapability.THINKING:
-        return OpenAIAiService(os.getenv("OPENAI_API_KEY"), THINKING_OPENAI_MODEL)
+        return GenimiAiService(THINKING_GEMINI_MODEL)
+    # if capability == AiServiceCapability.FAST:
+    #     return OpenAIAiService(os.getenv("OPENAI_API_KEY"), FAST_OPENAI_MODEL)
+    # elif capability == AiServiceCapability.THINKING:
+    #     return OpenAIAiService(os.getenv("OPENAI_API_KEY"), THINKING_OPENAI_MODEL)

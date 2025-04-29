@@ -57,7 +57,7 @@ class ModelContextProtocol:
         context: Union[str, List[DocumentResults]],
         reasoning_strategy: Optional[ReasoningStrategy] = None,
         context_strategy: Optional[ContextStrategy] = None,
-        structured_output_format: Optional[Type[AiResponseBaseModel]] = None
+        previous_context: str = None,
     ) -> Union[str, Dict[str, Any], AiResponseBaseModel]:
         """Generate a response to a query using the provided context.
 
@@ -71,6 +71,11 @@ class ModelContextProtocol:
         Returns:
             Generated response as string, dict, or structured object
         """
+
+        if previous_context:
+            query_with_previous_context = f"{query}\n\nPrevious Context:\n{previous_context}"
+        else:
+            query_with_previous_context = query
 
         if isinstance(context, list):
             formatted_context = self.context_handling_service.format_context(
@@ -109,18 +114,18 @@ class ModelContextProtocol:
 
         if reasoning_strategy == ReasoningStrategy.DIRECT:
             return self.response_generation_service.generate_direct_response(
-                query, processed_context)
+                query_with_previous_context, processed_context)
         elif reasoning_strategy == ReasoningStrategy.COT:
             return self.response_generation_service.generate_chain_of_thought_response(
-                query, processed_context)
+                query_with_previous_context, processed_context)
         elif reasoning_strategy == ReasoningStrategy.MULTI_STEP:
             return self.response_generation_service.generate_multi_step_response(
-                query, processed_context)
+                query_with_previous_context, processed_context)
         else:
             logger.warning(
                 f"Unknown reasoning strategy: {reasoning_strategy}. Using direct generation instead.")
             return self.response_generation_service.generate_direct_response(
-                query, processed_context)
+                query_with_previous_context, processed_context)
 
     def assess_context_relevance(self, query: str, context: Union[str, List[DocumentResults]]) -> Dict[str, Any]:
         """Assess if the context is relevant and sufficient for answering the query.

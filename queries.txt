@@ -22,7 +22,12 @@ Evaluate the candidate Rachel Martinez. Based on the findings, generate a full r
 
 Evaluate the candidate Doncho Minkov. Based on the findings, generate a full report with tables, lists, and detailed summary of his fit in the Manager of Customer Success team with "match"/"no-match" for skills. Include any additional insights you found.
 
-Is Mark Peterson good fit for the Management position in the Customer Success Team?
+Is Mark Peterson good candidate for the Management position in the Customer Success Team?
+Who is the the best match for the Manager position in the Customer Success Team?
+Identify all candidates that match the Manager position in the Customer Success Team. Analyze them. Select the best match.
+
+Collect all job openings step by step. Analyze the thoroughly. Give a detailed overview of each.
+Analyze all the job openings step by step. Give a brief overview of each.
 
 Generate a full report with tables, lists, and detailed summary of Doncho's interview.
 Evaluate the interview of Doncho. Search for relevant to his skills and experience job openings. Build a comprehensive report on his alignment with these job openings.

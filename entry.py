@@ -4,6 +4,7 @@ from pathlib import Path
 import re
 
 from dotenv import load_dotenv
+from app.chat import Chat
 from app.hr_system import HRIntelligenceSystem
 from app.schemas.retriever import DocumentType
 
@@ -178,13 +179,8 @@ def run_full_demo(populate_data=False):
     # Load environment variables (for API key)
     load_dotenv()
     
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        print("Error: OPENAI_API_KEY not found in environment variables")
-        return
-        
     # Initialize the HR Intelligence System
-    hr_system = HRIntelligenceSystem(api_key)
+    chat = Chat()
     
     # Add sample documents to the system only if populate_data is True
     if populate_data:
@@ -208,7 +204,7 @@ def run_full_demo(populate_data=False):
             
         # Process the query
         try:
-            result = hr_system.ask(query)
+            result = chat.ask(query)
             
             print("\nResponse:")
             print("---------")

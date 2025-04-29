@@ -39,7 +39,7 @@ class HRIntelligenceSystem:
         doc_id = self.document_processor.process_meeting_notes(text, metadata)
         return {"file_id": file_id, "doc_id": doc_id}
         
-    def ask(self, query, top_k=5, max_iterations=5):
+    def ask(self, query, top_k=5, max_iterations=5, context=None):
         """Ask a question to the HR Intelligence System"""
         retrieval_result = self.retriever.retrieve(
             query, 
@@ -53,7 +53,7 @@ class HRIntelligenceSystem:
         print(f"Optimized queries: {retrieval_result['optimized_queries']}")
         print(f"Retrieved {len(retrieved_docs)} documents after {max_iterations} max iterations")
 
-        response = self.mcp.generate_response(query, retrieved_docs)
+        response = self.mcp.generate_response(query, retrieved_docs, previous_context=context)
         
         return {
             "response": response,
