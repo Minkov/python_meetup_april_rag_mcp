@@ -3,3 +3,5 @@ hr_documents/
 chroma_db/
 .vscode/
 .env
+
+__pycache__

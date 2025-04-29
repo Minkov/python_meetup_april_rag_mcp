@@ -16,6 +16,4 @@ class OrchestratorResult:
     """Result from the orchestrator including response and debug info."""
     response: str
     retrieved_docs: List[DocumentResults]
-    follow_up_queries: List[str]
     total_retrievals: int
-    query_analysis: Dict[str, Any] 

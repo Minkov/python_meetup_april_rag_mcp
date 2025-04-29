@@ -44,7 +44,8 @@ class Retriever:
             improved_query, query_analysis)
 
         # Step 4: Get initial results
-        results = self._get_initial_results(optimized_queries, query_analysis, top_k)
+        results = self._get_initial_results(
+            optimized_queries, query_analysis, top_k)
 
         # Step 5: Select the best results
         selected_results = self._select_best_results(
@@ -147,36 +148,56 @@ class Retriever:
         return result.optimized_queries
 
     def _select_best_results(self, results, improved_query, query_analysis):
-        """
-        Select the best results by deduplicating and scoring them.
+        # Create a lookup dictionary for efficient access
+        if not results:
+            return []
 
-        Args:
-            results: List of search results
-            improved_query: The improved query text
-            query_analysis: The query analysis object
+        result_lookup = {result.doc_id: result for result in results}
 
-        Returns:
-            List of selected results that meet the relevance threshold
-        """
-        unique_results = {}
+        # Organize results by base ID
+        base_id_groups = {}
         for result in results:
             dedup_id = self._get_base_id(result)
-            if dedup_id not in unique_results or result.similarity > unique_results[dedup_id].similarity:
-                unique_results[dedup_id] = result
+            if dedup_id not in base_id_groups:
+                base_id_groups[dedup_id] = []
+            base_id_groups[dedup_id].append(result)
 
+        # Select highest similarity document from each group
+        unique_results = []
+        for group in base_id_groups.values():
+            unique_results.append(max(group, key=lambda x: x.similarity))
+
+        # Score the unique results
         scored_results = self.result_analysis_service.score_results(
-            improved_query, query_analysis, list(unique_results.values()))
+            improved_query, query_analysis, unique_results)
 
+        # Apply threshold but ensure diversity if possible
         selected_results = []
-        for scored_doc in scored_results.documents:
-            if scored_doc.relevance_score < self.relevance_threshold:
-                continue
+        doc_types_included = set()
 
-            original_doc = next(
-                doc for doc in results
-                if scored_doc.doc_id == doc.doc_id
-            )
-            selected_results.append(original_doc)
+        # First pass: add high-relevance documents
+        for scored_doc in sorted(scored_results.documents, key=lambda x: x.relevance_score, reverse=True):
+            if scored_doc.relevance_score >= self.relevance_threshold:
+                original_doc = result_lookup[scored_doc.doc_id]
+                selected_results.append(original_doc)
+                doc_type = original_doc.metadata.get(
+                    "document_type", "unknown")
+                doc_types_included.add(doc_type)
+
+        # Second pass: ensure diversity by adding at least one document of each type
+        if query_analysis.information_type:
+            for info_type in query_analysis.information_type:
+                info_type_value = info_type.value
+                if info_type_value not in doc_types_included:
+                    # Find highest scoring document of this type
+                    for scored_doc in sorted(scored_results.documents, key=lambda x: x.relevance_score, reverse=True):
+                        original_doc = result_lookup[scored_doc.doc_id]
+                        doc_type = original_doc.metadata.get(
+                            "document_type", "unknown")
+                        if doc_type == info_type_value and original_doc not in selected_results:
+                            selected_results.append(original_doc)
+                            doc_types_included.add(doc_type)
+                            break
 
         return selected_results
 
@@ -312,7 +333,8 @@ class Retriever:
                 continue
 
             if result.metadata.get("hierarchy_level") == "document":
-                reconstructed_text = self._reconstruct_document_from_sections(result)
+                reconstructed_text = self._reconstruct_document_from_sections(
+                    result)
                 if reconstructed_text:
                     result = DocumentResults(
                         doc_id=result.doc_id,

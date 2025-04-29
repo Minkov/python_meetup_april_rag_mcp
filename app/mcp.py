@@ -51,8 +51,7 @@ class ModelContextProtocol:
             model, max_tokens, temperature)
         self.response_generation_service = ResponseGenerationService(
             model, max_tokens, temperature)
-        self.context_relevance_service = ContextRelevanceService(
-            model, max_tokens, temperature)
+        self.context_relevance_service = ContextRelevanceService(model)
 
     def generate_response(
         self,

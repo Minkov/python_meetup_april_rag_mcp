@@ -40,3 +40,10 @@ Explain details for the Senior Software Engineer Public Website Team for a non-t
 Explain to me the difference between a Mid-Level Software Engineer and a Junior Data Engineer.
 
 Analyze the resume of Mark, compare it to the job description of the Senior Web Engineer and provide a match score
+
+
+
+
+
+Compile detailed profiles of Mark Peterson, Ava Miller and David Chan
+Find all open jobs. Analyze them step by step. Generate a best report ever comparing each of the three candidates with the job openings. At the end, summarize everything you know so far.
